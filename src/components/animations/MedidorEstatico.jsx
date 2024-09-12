@@ -49,7 +49,7 @@ function GaugeText({ value, valueMax, cx, cy }) {
 }
 
 export default function CompositionExample() {
-  const value = 254;
+  const value = 242.25;
   const valueMax = 265;
 
   return (
