@@ -10,21 +10,21 @@ export default function DifferentLength() {
   return (
     <div className="flex flex-col items-center">
       <LineChart
-        xAxis={[{ data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] }]}
-        yAxis={[{ data: [0, 5, 10, 15, 20, 25] }]} // Ajustado para acomodar el rango de valores
+        xAxis={[{ data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }]}
+        yAxis={[{ data: [0, 5, 10, 15] }]} // Ajustado para acomodar el rango de valores
         series={[
           {
-            data: [0, 5, 10, 5, 0, 10, 0, 15, 5, 15, 10, 16, 0, 10, 0],
+            data: [0, 5, 10, 5, 0, 10, 0, 15, 3, 0],
             valueFormatter: (value) =>
               value == null ? "NaN" : value.toString(),
             color: "#FF5733",
           },
           {
-            data: [20, 15, 0, 20, 0, 10, 20, 0, 10, 15, 20, 0, 10, 20, 0],
+            data: [0, 15, 0, 15, 0, 10, 15, 0, 10, 0],
             color: "#8a2be2",
           },
           {
-            data: [5, 10, 15, 0, 6, 5, 15, 10, 3, 0, 15, 10, 8, 5],
+            data: [0, 10, 15, 0, 6, 5, 15, 10, 3, 0],
             valueFormatter: (value) => (value == null ? "?" : value.toString()),
             color: "#008080",
           },
