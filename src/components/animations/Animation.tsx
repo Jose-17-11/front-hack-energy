@@ -1,11 +1,9 @@
-import { red } from '@mui/material/colors';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { AiOutlineBgColors } from 'react-icons/ai';
-import { TbBackground } from 'react-icons/tb';
 
 // Define una interfaz para los props
 interface GridDemoProps {
   dataset: Array<{ london: number; paris: number; newYork: number; seoul: number; month: string }>;
+  week: string;
 }
 
 const chartSetting = {
@@ -22,12 +20,12 @@ const chartSetting = {
 const valueFormatter = (value: number | null) => `${value}Kwh`;
 
 // Ahora tu componente recibe los props de acuerdo a la interfaz
-export default function GridDemo({ dataset }: GridDemoProps) {
+export default function GridDemo({ dataset, week }: GridDemoProps) {
   return (
     <BarChart
       dataset={dataset}
       yAxis={[{ scaleType: 'band', dataKey: 'month' }]}
-      series={[{ dataKey: 'seoul', label: 'Consumo en Kwh', valueFormatter }]}
+      series={[{ dataKey: 'seoul', label: `Consumo en Kwh ${week}`, valueFormatter }]}
       layout="horizontal"
       grid={{ vertical: true }}
       {...chartSetting}
