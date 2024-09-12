@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import ImageFondo from "@assets/logo.png";
 import { FaUserCircle, FaPowerOff } from "react-icons/fa";
 import Button from "@components/common/Button.astro";
+import Animation from "@components/animations/Animation.jsx";
 ---
 
 <div class="min-h-screen flex flex-col">
@@ -30,7 +31,7 @@ import Button from "@components/common/Button.astro";
 
     <!-- Dashboard -->
     <div class="flex-grow bg-white p-8">
-      <iframe src="https://guevadev.grafana.net/d-solo/F9eIn6Q7z/kitchenops-makeover?from=1725506094180&to=1726110894180&refresh=&orgId=1&panelId=13&__feature.dashboardSceneSolo" width="450" height="200" frameborder="0"></iframe>
+      <Animation client:load></Animation>
     </div>
   </section>
 </div>
