@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import Animation from "@components/animations/Animation.jsx";
 import Header from "@components/common/Header.astro";
 import Data from "../data/region_one.json"
+import DataTwo from "../data/region_two.json"
 ---
 
 <div class="h-screen grid grid-cols-1 grid-rows-12">
@@ -11,7 +12,7 @@ import Data from "../data/region_one.json"
     <aside class="bg-purple-100 p-4 w-64 flex flex-col items-center">
       <!-- Icono de usuario -->
       <div class="w-10 h-10 flex justify-center items-center">
-        <FaUserCircle className="text-6xl" />
+        <FaUserCircle className="text-6xl"/>
       </div>
       <h2 class="text-black mt-2">Adrian Guevara Rendón</h2>
     </aside>
@@ -22,7 +23,7 @@ import Data from "../data/region_one.json"
         <Animation client:load dataset={Data} ></Animation>
       </article>
       <article class="col-start-1 row-start-2 bg-slate-300 rounded-xl shadow-black shadow-md">
-        <Animation client:load dataset={Data}></Animation>
+        <Animation client:load dataset={DataTwo}></Animation>
       </article>
       <aside class="bg-slate-300 row-span-2 rounded-xl shadow-black shadow-md">
         <h3 class="w-full text-center py-4 text-2xl font-bold">Lorem ipsum dolor sit amet</h3>
