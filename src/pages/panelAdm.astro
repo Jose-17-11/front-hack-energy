@@ -14,26 +14,22 @@ import { Image } from "astro:assets"
 	<main>
 		<BaseL>     
 			<div class="flex-grow bg-white p-2 grid grid-cols-2 grid-rows-2 gap-4 overflow-hidden">
-				<article class="col-start-1 row-start-1 bg-slate-300 rounded-xl shadow-black shadow-md">
-			  		<Animation client:load dataset={Data} ></Animation>
-				</article>
-				<article class="col-start-1 row-start-2 bg-slate-300 rounded-xl shadow-black shadow-md">
-				  <Animation client:load dataset={DataTwo}></Animation>
-				</article>
-				<aside class="bg-slate-300 row-span-2 rounded-xl shadow-black shadow-md relative">
-			  		<h3 class="w-full text-center py-4 text-2xl font-bold">Lorem ipsum dolor sit amet</h3>
-			  		<ul class="w-full h-full flex flex-col gap-8 pl-8 mt-8 text-slate-900">
-						<li>Lorem, ipsum.</li>
-						<li>Lorem, ipsum.</li>
-						<li>Lorem, ipsum.</li>
-						<li>Lorem, ipsum.</li>
-						<li>Lorem, ipsum.</li>
-						<li>Lorem, ipsum.</li>
-			  		</ul>
-					<div class='w-60 h-48 bg-black rounded-full' ></div>
-			  		<Mascota client:load >
-						<Image src={Happy} alt="Example" class="w-60 h-60 object-cover absolute top-8" />
-			  		</Mascota>
+				<a href="/realTime" class="col-start-1 row-start-1 bg-slate-300 rounded-xl shadow-black shadow-md">
+				<Animation client:load dataset={Data} ></Animation>
+				</a>
+				<a href="/realTime" class="col-start-1 row-start-2 bg-slate-300 rounded-xl shadow-black shadow-md">
+				<Animation client:load dataset={DataTwo}></Animation>
+				</a>
+				<aside class="bg-slate-300 row-span-2 rounded-xl shadow-black shadow-md">
+				<h3 class="w-full text-center py-4 text-2xl font-bold">Lorem ipsum dolor sit amet</h3>
+				<ul class="w-full h-full flex flex-col gap-8 pl-8 mt-8 text-slate-900">
+					<li>Lorem, ipsum.</li>
+					<li>Lorem, ipsum.</li>
+					<li>Lorem, ipsum.</li>
+					<li>Lorem, ipsum.</li>
+					<li>Lorem, ipsum.</li>
+					<li>Lorem, ipsum.</li>
+				</ul>
 				</aside>
 		  </div>
 		</BaseL>
