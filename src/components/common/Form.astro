@@ -5,7 +5,7 @@ import Button from "@components/common/Button.astro"
 ---
 <section class="w-5/6 h-5/6 bg-white grid grid-cols-3 grid-rows-1 rounded-xl shadow-2xl shadow-black" >
     <figure class="col-span-2" >
-        <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover bg-purple-400 rounded-l-xl" />
+        <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover bg-purple-500 rounded-l-xl" />
     </figure>
     <form action="" method="post" class="rounded-xl col-span-1" >
         <h2 class="h-1/5 text-3xl font-bold flex justify-center items-center " >LowerG</h2>
@@ -13,7 +13,7 @@ import Button from "@components/common/Button.astro"
             <input type="email" name="" id="name" placeholder="Email" class="w-full bg-transparent border-b-2 focus:outline-none" >
             <input type="password" name="" id="password" placeholder="Password" class="w-full bg-transparent border-b-2 focus:outline-none" >
             <p class="w-full text-end" ><a href="#" class="text-purple-800 font-bold hover:text-purple-950 transition-all " >Forget password</a></p>
-            <Button types="submit" >
+            <Button types="submit" link="/panelAdm" >
                 Login
             </Button>
         </div>

@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import ImageFondo from "@assets/logo.png";
-import { FaUserCircle, FaUser } from "react-icons/fa";
+import { FaUserCircle, FaPowerOff } from "react-icons/fa";
+import Button from "@components/common/Button.astro";
 ---
 
 <div class="min-h-screen flex flex-col">
@@ -10,21 +11,12 @@ import { FaUserCircle, FaUser } from "react-icons/fa";
     <div class="w-20 h-20">
       <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover" />
     </div>
-    <details class="relative">
-      <summary class="cursor-pointer list-none flex items-center">
-        <!-- Icono de usuario -->
-        <div class="w-10 h-10 flex justify-center items-center">
-          <FaUser className="text-3xl" />
-        </div>
-      </summary>
-
-      <!-- Menú desplegable -->
-      <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-50">
-        <ul>
-          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Log Out</li>
-        </ul>
+      <!-- Icono de usuario -->
+      <div class="w-10 h-10 flex justify-center items-center cursor-pointer">
+        <a href="/">
+          <FaPowerOff className="text-3xl" />
+        </a>
       </div>
-    </details>
   </div>
 
   <section class="flex flex-grow">
@@ -38,6 +30,7 @@ import { FaUserCircle, FaUser } from "react-icons/fa";
 
     <!-- Dashboard -->
     <div class="flex-grow bg-white p-8">
+      <iframe src="https://guevadev.grafana.net/d-solo/F9eIn6Q7z/kitchenops-makeover?from=1725506094180&to=1726110894180&refresh=&orgId=1&panelId=13&__feature.dashboardSceneSolo" width="450" height="200" frameborder="0"></iframe>
     </div>
   </section>
 </div>
