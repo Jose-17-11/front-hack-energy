@@ -12,14 +12,28 @@ import Button from "@components/common/Button.astro";
             <h2 class="text-7xl font-bold flex justify-center items-center">
                 Lower<span class="text-pink-500">G</span>
             </h2>
-            <input type="email" name="" id="name" placeholder="Email" class="w-full bg-transparent border-b-2 focus:outline-none">
-            <input type="password" name="" id="password" placeholder="Password" class="w-full bg-transparent border-b-2 focus:outline-none">
+            <input required type="email" name="" id="email" placeholder="Email" class="w-full bg-transparent border-b-2 focus:outline-none">
+            <input required type="password" name="" id="password" placeholder="Password" class="w-full bg-transparent border-b-2 focus:outline-none">
             <p class="w-full text-end">
                 <a href="#" class="text-purple-800 font-bold hover:text-purple-950 transition-all">Forget password</a>
             </p>
-            <Button types="submit" link="/panel-edificios">
+            <Button types="submit" id="login">
                 Login
             </Button>
         </div>
     </form>
 </section>
+<script>
+
+    const submit = document.getElementById('login')
+    const email = document.getElementById('email') as HTMLInputElement;
+    const password = document.getElementById('password') as HTMLInputElement;
+    submit?.addEventListener('click', () => {
+        if(email.value==="guevara@midu.com" && password.value==="1q2w3e4r5t") {
+            window.open("/panel-edificios")
+        } else {
+            alert("Ingrese bien los datos.")
+        }
+    })
+</script>
+
