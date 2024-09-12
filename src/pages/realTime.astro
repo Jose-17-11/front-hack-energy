@@ -2,13 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import BaseL from '../layouts/BaseLayout.astro';
 import Medidor from "../components/animations/Medidor.jsx";
+import Focos from "../components/animations/Foco.jsx";
 ---
 <Layout title="LowerG">
     <main>
         <BaseL>
             <div class="flex-grow bg-white p-2 grid grid-cols-2 grid-rows-2 gap-4 overflow-hidden">
                 <article class="col-start-1 row-start-1 bg-slate-300 rounded-xl shadow-black shadow-md grid grid-rows-[auto,1fr]">
-                    <h3 class="w-full text-center py-4 text-2xl font-bold">Consumo de Kwh por día</h3>
+                    <h3 class="w-full text-center py-4 text-2xl font-bold">Consumo de Kwh</h3>
                     <div class="flex justify-center items-center">
                         <Medidor client:load />
                     </div>
@@ -16,6 +17,7 @@ import Medidor from "../components/animations/Medidor.jsx";
 
                 <aside class="bg-slate-300 row-span-2 rounded-xl shadow-black shadow-md">
                     <h3 class="w-full text-center py-4 text-2xl font-bold">Dispositivos electronicos que tienen mal funcionamiento</h3>
+                    <Focos client:load />
                 </aside>
             </div>
         </BaseL>
