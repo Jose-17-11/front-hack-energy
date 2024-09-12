@@ -8,10 +8,17 @@ import Header from "@components/common/Header.astro";
   <section class="flex row-span-10">
     <aside class="bg-purple-100 p-4 w-64 flex flex-col items-center">
       <!-- Icono de usuario -->
-      <div class="w-10 h-10 flex justify-center items-center">
-        <FaUserCircle className="text-6xl" />
+      <div class="w-20 h-20 flex justify-center items-center mt-3">
+        <FaUserCircle className="text-9xl" />
       </div>
-      <h2 class="text-black mt-2">Adrian Guevara Rendón</h2>
+      <article class="text-center mt-2">
+        <h2 class="text-black mt-2">Adrian Guevara Rendón</h2>
+        <ul class="text-slate-700 mt-2">
+          <li class="mt-2">guevara@midu.com</li>
+          <li class="mt-2">7351890934</li>
+          <li class="mt-2">DevG</li>
+        </ul>
+      </article>
     </aside>
     <slot />
   </section>
