@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import ImageFondo from "@assets/logo.png";
+import Button from "@components/common/Button.astro"
+---
+<section class="w-5/6 h-5/6 bg-white grid grid-cols-3 grid-rows-1 rounded-xl shadow-2xl shadow-black" >
+    <figure class="col-span-2" >
+        <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover bg-purple-400 rounded-l-xl" />
+    </figure>
+    <form action="" method="post" class="rounded-xl col-span-1" >
+        <h2 class="h-1/5 text-3xl font-bold flex justify-center items-center " >LowerG</h2>
+        <div class="h-4/5 bg-slate-300 flex flex-col justify-center items-center gap-8 " >
+            <input type="email" name="" id="name" placeholder="Email" class="bg-transparent border-b-2 " >
+            <input type="password" name="" id="password" placeholder="Name" class="bg-transparent border-b-2" >
+            <Button types="submit" >
+                Login
+            </Button>
+        </div>
+
+    </form>
+</section>
