@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import ImageFondo from "@assets/logo.png";
+import { FaUserCircle, FaUser } from "react-icons/fa";
+---
+
+<div class="min-h-screen flex flex-col">
+  <div class="bg-purple-500 flex justify-between items-center p-4 relative">
+    <!-- Logo -->
+    <div class="w-20 h-20">
+      <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover" />
+    </div>
+    <details class="relative">
+      <summary class="cursor-pointer list-none flex items-center">
+        <!-- Icono de usuario -->
+        <div class="w-10 h-10 flex justify-center items-center">
+          <FaUser className="text-3xl" />
+        </div>
+      </summary>
+
+      <!-- Menú desplegable -->
+      <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-50">
+        <ul>
+          <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Log Out</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <section class="flex flex-grow">
+    <div class="bg-purple-100 p-4 w-64 flex flex-col items-center">
+      <!-- Icono de usuario -->
+      <div class="w-10 h-10 flex justify-center items-center">
+        <FaUserCircle className="text-6xl" />
+      </div>
+      <h2 class="text-black mt-2">Adrian Guevara Rendón</h2>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="flex-grow bg-white p-8">
+    </div>
+  </section>
+</div>
