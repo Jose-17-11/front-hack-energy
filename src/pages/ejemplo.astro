@@ -1,9 +1,16 @@
 ---
+
+import Happy from "@assets/mascota_happy.png";
+import Sad from "@assets/mascota_sad.png"
 import Layout from "src/layouts/Layout.astro";
-import GraphicsBuilding from "@components/animations/GraphicsBuilding";
+
+import Mascota from '@components/animations/Mascota';
+import { Image } from "astro:assets"
 ---
 <Layout title="sdnwk" >
     <section class="w-full h-screen ">
-        <GraphicsBuilding client:load />
+        <Mascota client:load >
+            <Image src={Happy} alt="Example" class="w-60 h-60 object-cover absolute top-8" />
+        </Mascota>
     </section>
 </Layout>
