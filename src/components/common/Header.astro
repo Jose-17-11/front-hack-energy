@@ -1,3 +1,17 @@
-<header>
-    
+---
+import { FaPowerOff } from 'react-icons/fa'
+import { Image } from "astro:assets";
+import ImageFondo from "@assets/logo.png";
+---
+<header class="bg-purple-500 flex justify-between items-center p-2 row-span-2" >
+    <!-- Logo -->
+    <figure class="w-auto h-24">
+      <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover" />
+    </figure>
+    <!-- Icono de usuario -->
+    <div class="w-10 h-10 flex justify-center items-center cursor-pointer">
+      <a href="/">
+        <FaPowerOff className="text-3xl" />
+      </a>
+    </div>
 </header>
