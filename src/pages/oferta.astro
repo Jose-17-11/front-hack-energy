@@ -5,96 +5,62 @@ import checkBlue from "@assets/checkBlue.png";
 import checkB from "@assets/checkB.png";
 ---
 <BaseLayout>
-    <div class="min-h-screen flex flex-col items-center p-4">
+    <div class="min-h-screen flex flex-col items-center p-8 pb-4">
         <div class="text-center font-semibold">
             <h1 class="text-5xl mb-4">
-                <span class="text-blue-700 tracking-wide">Planes </span>
+                <span class="text-purple-500 tracking-wide">Planes </span>
                 <span>para ti</span>
             </h1>
             <p class="pt-6 text-xl text-gray-400 font-normal px-8 md:w-full">
                 Elige un plan que se ajuste a tus necesidades<br />
-
             </p>
         </div>
 
         <div class="pt-24 flex flex-col md:flex-row gap-8 justify-center items-center">
             <!-- Basic Card -->
-            <div class="w-80 p-8 bg-white text-center rounded-3xl shadow-xl">
-                <h1 class="text-black font-semibold text-2xl">Básico</h1>
+            <div class="w-80 min-h-96 p-8 bg-white text-center rounded-3xl shadow-xl">
+                <h1 class="text-black font-semibold text-2xl">Estándar</h1>
                 <p class="pt-2 tracking-wide">
-                <span class="text-black text-3xl font-semibold">$99</span>
-                <span class="text-gray-400 font-medium">/ mes</span>
+                    <span class="text-black text-3xl font-semibold">$0.00</span>
+                    <span class="text-gray-400 font-medium">/ mes</span>
                 </p>
                 <hr class="mt-4 border-1" />
                 <div class="pt-8">
-                <p class="font-semibold text-gray-400 text-left flex items-center mb-4">
-                    <Image src={checkBlue} class="w-5 h-5 mr-2" alt="check" />
-                    <span>Acceso a todo el catálogo en <span class="text-black">calidad estándar (SD)</span></span>
-                </p>
-                <p class="font-semibold text-gray-400 text-left flex items-center mb-4">
-                    <Image class="w-5 h-5 mr-2" src={checkBlue} alt="check" />
-                    <span>Reproducción en <span class="text-black">un dispositivo</span> a la vez</span>
-                </p>
-                <p class="font-semibold text-gray-400 text-left flex items-center">
-                    <Image class="w-5 h-5 mr-2" src={checkBlue} alt="check" />
-                    <span><span class="text-black">Descargas limitadas</span> en 1 dispositivo</span>
-                </p>
-                <a href="#" class="block w-full py-4 bg-blue-600 mt-8 rounded-xl text-white font-medium">Elegir Plan</a>
+                    <p class="font-semibold text-gray-400 text-left flex items-center">
+                        <Image class="w-5 h-5 mr-2" src={checkBlue} alt="check" />
+                        <span><span class="text-black">Acceso al resumen</span> semanal</span>
+                    </p>
+                    <a href="#" class="block w-full py-4 bg-purple-500 mt-8 rounded-xl text-white font-medium">Elegir Plan</a>
+                </div>
             </div>
-        </div>
 
-        <!-- Standard Card -->
-        <div class="w-80 p-8 bg-gray-900 text-center rounded-3xl text-white shadow-xl border-4 border-white transform scale-105 relative">
-            <h1 class="text-white font-semibold text-2xl">Estándar</h1>
-            <p class="pt-2 tracking-wide">
-            <span class="text-3xl font-semibold">$160</span>
-            <span class="text-gray-400 font-medium">/ mes</span>
-            </p>
-            <hr class="mt-4 border-1 border-gray-600" />
-            <div class="pt-8">
-            <p class="font-semibold text-gray-400 text-left flex items-center mb-4">
-                <Image class="w-5 h-5 mr-2" src={checkB} alt="check" />
-                <span>Acceso a todo el catálogo en <span class="text-white">HD</span></span>
-            </p>
-            <p class="font-semibold text-gray-400 text-left flex items-center mb-4">
-                <Image class="w-5 h-5 mr-2" src={checkB} alt="check" />
-                <span>Reproducción en <span class="text-white">dos dispositivos</span> a la vez</span>
-            </p>
-            <p class="font-semibold text-gray-400 text-left flex items-center">
-                <Image class="w-5 h-5 mr-2" src={checkB} alt="check" />
-                <span><span class="text-white">Descargas</span> en hasta 2 dispositivos</span>
-            </p>
-            <a href="#" class="block w-full py-4 bg-blue-600 mt-8 rounded-xl text-white font-medium">Elegir Plan</a>
+            <!-- Premium Card -->
+            <div class="w-80 min-h-96 p-8 bg-gray-900 text-center rounded-3xl text-white shadow-xl border-4 border-white transform scale-105 relative">
+                <h1 class="text-white font-semibold text-2xl">Premium</h1>
+                <p class="pt-2 tracking-wide">
+                    <span class="text-3xl font-semibold">$150</span>
+                    <span class="text-gray-400 font-medium">/ mes</span>
+                </p>
+                <hr class="mt-4 border-1 border-gray-600" />
+                <div class="pt-8">
+                    <p class="font-semibold text-gray-400 text-left flex items-center mb-4">
+                        <Image class="w-5 h-5 mr-2" src={checkB} alt="check" />
+                        <span>Acceso al resumen<span class="text-white"> semanal</span></span>
+                    </p>
+                    <p class="font-semibold text-gray-400 text-left flex items-center mb-4">
+                        <Image class="w-5 h-5 mr-2" src={checkB} alt="check" />
+                        <span>Acceso al resumen<span class="text-white"> diario</span></span>
+                    </p>
+                    <p class="font-semibold text-gray-400 text-left flex items-center">
+                        <Image class="w-5 h-5 mr-2" src={checkB} alt="check" />
+                        <span><span class="text-white">Acceso al resumen en tiempo</span> real</span>
+                    </p>
+                    <a href="#" class="block w-full py-4 bg-purple-500 mt-8 rounded-xl text-white font-medium">Elegir Plan</a>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <p class="bg-purple-500 font-semibold px-4 py-1 rounded-full uppercase text-xs">Popular</p>
+                </div>
             </div>
-            <div class="absolute top-4 right-4">
-            <p class="bg-blue-700 font-semibold px-4 py-1 rounded-full uppercase text-xs">Popular</p>
-            </div>
-        </div>
-
-        <!-- Premium Card -->
-        <div class="w-80 p-8 bg-white text-center rounded-3xl shadow-xl">
-            <h1 class="text-black font-semibold text-2xl">Premium</h1>
-            <p class="pt-2 tracking-wide">
-            <span class="text-black text-3xl font-semibold">$220</span>
-            <span class="text-gray-400 font-medium">/ mes</span>
-            </p>
-            <hr class="mt-4 border-1" />
-            <div class="pt-8">
-            <p class="font-semibold text-gray-400 text-left flex items-center mb-4">
-                <Image class="w-5 h-5 mr-2" src={checkBlue} alt="check" />
-                <span>Acceso a todo el catálogo en <span class="text-black">Ultra HD (4K)</span></span>
-            </p>
-            <p class="font-semibold text-gray-400 text-left flex items-center mb-4">
-                <Image class="w-5 h-5 mr-2" src={checkBlue} alt="check" />
-                <span>Reproducción en <span class="text-black">cuatro dispositivos</span> a la vez</span>
-            </p>
-            <p class="font-semibold text-gray-400 text-left flex items-center">
-                <Image class="w-5 h-5 mr-2" src={checkBlue} alt="check" />
-                <span><span class="text-black">Descargas ilimitadas</span> en 4 dispositivos</span>
-            </p>
-            <a href="#" class="block w-full py-4 bg-blue-600 mt-8 rounded-xl text-white font-medium">Elegir Plan</a>
-            </div>
-        </div>
         </div>
     </div>
 </BaseLayout>
