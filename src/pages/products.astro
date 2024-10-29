@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/baseL.astro";
+import { Image } from "astro:assets";
+import device from "@assets/device.jpg";
+import placa from "@assets/placa.jpg";
+---
+
+<BaseLayout>
+  <div class="flex flex-col items-center space-y-8 p-6">
+    <!-- Título General -->
+    <h1 class="text-2xl font-bold">GENERAL</h1>
+    <p class="text-center max-w-lg text-gray-600">
+      Dispositivo que puede ser conectado a una red eléctrica por medio de un enchufe convencional.
+      Tiene la capacidad de analizar el consumo energético de un edificio por medio de un módulo de
+      sensores y procesamiento, además de tener un módulo Wi-Fi que le permite enviar los datos
+      recopilados a un servicio en la nube, para su uso próximo.
+    </p>
+
+    <!-- Título Producto -->
+    <h2 class="text-2xl font-bold mt-8">PRODUCTO</h2>
+    
+    <!-- Sección de Producto con Imagen y Texto -->
+    <div class="flex flex-col items-center space-y-4 md:space-y-8">
+      <!-- Primera Fila: Imagen a la izquierda y Texto a la derecha -->
+      <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full max-w-2xl">
+        <Image src={device} alt="Ejemplo de dispositivo" class="rounded-lg shadow-lg w-48 h-48 object-cover" />
+        <p class="text-gray-600 text-center md:text-left w-full md:w-1/2">
+          El esquema del proyecto consta de un producto de dimensiones 6x8x4 cm, compuesto de una carcasa negra y una clavija estándar de doble fase.
+        </p>
+      </div>
+
+      <!-- Segunda Fila: Texto a la izquierda y Imagen a la derecha -->
+      <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full max-w-2xl">
+        <p class="text-gray-600 text-center md:text-left w-full md:w-1/2">
+          En la cara contigua la salida por medio de un LCD de 16x2 y un teclado de aproximadamente 4 cm, la alimentación está cubierta por la misma energía que recibe al ser enchufado.
+        </p>
+        <Image src={placa} alt="Ejemplo de placa" class="rounded-lg shadow-lg w-72 h-48 object-cover" />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
