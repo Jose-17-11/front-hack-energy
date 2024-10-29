@@ -24,15 +24,19 @@ import Button from "@components/common/Button.astro";
     </form>
 </section>
 <script>
-    const submit = document.getElementById('login')
+    const submit = document.getElementById('login');
     const email = document.getElementById('email') as HTMLInputElement;
     const password = document.getElementById('password') as HTMLInputElement;
-    submit?.addEventListener('click', () => {
-        if(email.value==="guevara@midu.com" && password.value==="1q2w3e4r5t") {
-            window.open("/panel-edificios")
+
+    submit?.addEventListener('click', (event) => {
+        event.preventDefault();  
+
+        if (email.value === "guevara@midu.com" && password.value === "1234") {
+            window.location.href = "/panel-edificios"; 
         } else {
-            alert("Ingrese bien los datos.")
+            alert("Ingrese bien los datos.");
         }
-    })
+    });
 </script>
+
 
