@@ -43,27 +43,47 @@ import { Image } from "astro:assets"
 				<a href="/realTime" class="col-start-1 row-start-2 bg-slate-300 rounded-xl shadow-black shadow-md hover:scale-105 transition-all">
 				  <Animation client:load dataset={DataTwo} week="de la semana actual." ></Animation>
 				</a>
-				<aside class="bg-slate-300 row-span-2 rounded-xl shadow-black shadow-md relative">
-			  		<h3 class="w-4/5 mx-auto text-center py-4 text-2xl font-bold">Por un consumo de energía mas amigable para todos.</h3>
-			  		<ul class="w-full h-full flex flex-col gap-8 pl-8 mt-8 text-slate-900">
-						<li class="font-light" >Promedio de consumo de la semana pasada: <span class="text-purple-800 font-bold" >{promedioData} Kwh</span></li>
-						<li class="font-light" >Promedio de consumo de la semana actual: <span class="text-purple-800 font-bold" >{promedioDataTwo} Kwh</span></li>
-			  		</ul>
-
-			  		<Mascota client:load >
-						<div class='w-56 h-56 bg-slate-200 shadow-lg shadow-black rounded-full absolute top-56 right-52 flex justify-center items-center p-4' >
-						  <p class="text-sm text-center" >
-							  {promedioData>promedioDataTwo ? positive + " Ahorraste el " + (Math.round(resultado)*-1) +"%" : negative + " Gastaste un " + Math.round(resultado) +"% más de tu servicio." } 
-						  </p>
-						</div>
-					</Mascota>
-			  		<Mascota client:load >
-						{
-							promedioData>promedioDataTwo ? <Image src={Happy} alt="Example" class="w-60 h-60 object-cover absolute top-52 hover:rotate-45 hover:cursor-pointer transition-all" /> : <Image src={Sad} alt="Example" class="w-60 h-60 object-cover absolute top-52 hover:rotate-45 hover:cursor-pointer transition-all" />
-						}
-						
-			  		</Mascota>
+				<aside class="bg-slate-300 row-span-2 rounded-xl shadow-black shadow-md relative flex flex-col items-center justify-start pt-4">
+					<h3 class="w-4/5 mx-auto text-center py-4 text-2xl font-bold">Por un consumo de energía más amigable para todos.</h3>
+					
+					<ul class="w-full flex flex-col gap-4 pl-8 pt-5 text-slate-900">
+						<li class="font-light">Promedio de consumo de la semana pasada: <span class="text-purple-800 font-bold">{promedioData} Kwh</span></li>
+						<li class="font-light">Promedio de consumo de la semana actual: <span class="text-purple-800 font-bold">{promedioDataTwo} Kwh</span></li>
+					</ul>
+				
+					<!-- Contenedor centrado con texto a la izquierda y animación a la derecha -->
+					<div class="flex items-center gap-4 mt-4 pt-20">
+						<!-- Contenedor para el texto -->
+						<Mascota client:load>
+							<div class="w-56 h-56 bg-slate-200 shadow-lg shadow-black rounded-full flex items-center justify-center p-4">
+								<p class="text-sm text-center">
+									{promedioData > promedioDataTwo 
+										? positive + " Ahorraste el " + (Math.round(resultado) * -1) + "%" 
+										: negative + " Gastaste un " + Math.round(resultado) + "% más de tu servicio."
+									}
+								</p>
+							</div>
+						</Mascota>
+				
+						<!-- Imagen de animación a la derecha del texto -->
+						<Mascota client:load>
+							{promedioData > promedioDataTwo ? (
+								<Image
+									src={Happy}
+									alt="Example"
+									class="w-60 h-60 object-cover transition-all hover:rotate-45 hover:cursor-pointer"
+								/>
+							) : (
+								<Image
+									src={Sad}
+									alt="Example"
+									class="w-60 h-60 object-cover transition-all hover:rotate-45 hover:cursor-pointer"
+								/>
+							)}
+						</Mascota>
+					</div>
 				</aside>
+				
 		  </div>
 		</BaseL>
 	</main>
