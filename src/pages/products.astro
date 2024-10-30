@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/baseL.astro";
 import { Image } from "astro:assets";
-import device from "@assets/device.jpg";
+import device from "@assets/productos.jpeg";
 import placa from "@assets/placa.jpg";
 ---
 
@@ -9,7 +9,7 @@ import placa from "@assets/placa.jpg";
   <div class="flex flex-col items-center space-y-8 p-6">
     <!-- Título General -->
     <h1 class="text-2xl font-bold">GENERAL</h1>
-    <p class="text-center max-w-lg text-gray-600">
+    <p class="text-gray-600 text-justify max-w-2xl">
       Dispositivo que puede ser conectado a una red eléctrica por medio de un enchufe convencional.
       Tiene la capacidad de analizar el consumo energético de un edificio por medio de un módulo de
       sensores y procesamiento, además de tener un módulo Wi-Fi que le permite enviar los datos
@@ -22,20 +22,31 @@ import placa from "@assets/placa.jpg";
     <!-- Sección de Producto con Imagen y Texto -->
     <div class="flex flex-col items-center space-y-4 md:space-y-8">
       <!-- Primera Fila: Imagen a la izquierda y Texto a la derecha -->
-      <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full max-w-2xl">
-        <Image src={device} alt="Ejemplo de dispositivo" class="rounded-lg shadow-lg w-48 h-48 object-cover" />
-        <p class="text-gray-600 text-center md:text-left w-full md:w-1/2">
-          El esquema del proyecto consta de un producto de dimensiones 6x8x4 cm, compuesto de una carcasa negra y una clavija estándar de doble fase.
+      <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full max-w-2xl h-auto md:h-52">
+        <Image src={device} alt="Ejemplo de dispositivo" class="rounded-lg shadow-lg w-80 h-full object-cover" />
+        <p class="text-gray-600 text-left md:text-left w-full md:w-1/2 flex-shrink-0">
+          El esquema del proyecto consta de un producto de dimensiones 6x8x4 cm, compuesto de una carcasa negra y una clavija estándar de doble fase. Su diseño compacto lo hace ideal para cualquier espacio sin ser invasivo, y cuenta con tecnología de bajo consumo energético, lo que permite un monitoreo constante sin afectar el uso de energía en el hogar.
         </p>
       </div>
+      
+
+      <!-- Descripción adicional del primer producto -->
+      <p class="text-gray-600 text-left max-w-2xl">
+        Este dispositivo cuenta con un sistema de actualización automática a través de su conexión a internet, asegurando que siempre esté equipado con las últimas funcionalidades. Además, su construcción a prueba de cortocircuitos y sobrecargas lo hace altamente seguro para ambientes residenciales y comerciales. 
+      </p>
 
       <!-- Segunda Fila: Texto a la izquierda y Imagen a la derecha -->
       <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full max-w-2xl">
         <p class="text-gray-600 text-center md:text-left w-full md:w-1/2">
-          En la cara contigua la salida por medio de un LCD de 16x2 y un teclado de aproximadamente 4 cm, la alimentación está cubierta por la misma energía que recibe al ser enchufado.
+          En la cara contigua se encuentra la salida de datos por medio de un LCD de 16x2 y un teclado de aproximadamente 4 cm. La alimentación está cubierta por la misma energía que recibe al ser enchufado. Este diseño permite una instalación rápida y fácil en cualquier enchufe disponible, convirtiéndose en una herramienta eficiente para gestionar el consumo de energía en tiempo real.
         </p>
         <Image src={placa} alt="Ejemplo de placa" class="rounded-lg shadow-lg w-72 h-48 object-cover" />
       </div>
+
+      <!-- Descripción adicional del segundo producto -->
+      <p class="text-gray-600 text-left max-w-2xl">
+        Con su interfaz de usuario sencilla y su display de alta visibilidad, este dispositivo facilita la lectura de datos en cualquier condición de luz. Además, incluye indicadores LED que muestran el estado de la conexión Wi-Fi y el consumo actual. Esta funcionalidad es ideal para usuarios que desean un acceso rápido y fácil a la información de consumo energético sin depender exclusivamente de la aplicación móvil.
+      </p>
     </div>
   </div>
 </BaseLayout>
