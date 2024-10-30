@@ -1,7 +1,9 @@
----
+--- 
 import BaseLayout from "../layouts/baseL.astro";
 import { Image } from "astro:assets";
-import device from "@assets/productos.jpeg";
+import productos from "@assets/productos.jpeg";
+import webApp from "@assets/webApp.jpeg";
+import device from "@assets/device.jpg";
 import placa from "@assets/placa.jpg";
 ---
 
@@ -23,13 +25,12 @@ import placa from "@assets/placa.jpg";
     <div class="flex flex-col items-center space-y-4 md:space-y-8">
       <!-- Primera Fila: Imagen a la izquierda y Texto a la derecha -->
       <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 w-full max-w-2xl h-auto md:h-52">
-        <Image src={device} alt="Ejemplo de dispositivo" class="rounded-lg shadow-lg w-80 h-full object-cover" />
+        <Image src={productos} alt="Ejemplo de dispositivo" class="rounded-lg shadow-lg w-80 h-full object-cover" />
         <p class="text-gray-600 text-left md:text-left w-full md:w-1/2 flex-shrink-0">
           El esquema del proyecto consta de un producto de dimensiones 6x8x4 cm, compuesto de una carcasa negra y una clavija estándar de doble fase. Su diseño compacto lo hace ideal para cualquier espacio sin ser invasivo, y cuenta con tecnología de bajo consumo energético, lo que permite un monitoreo constante sin afectar el uso de energía en el hogar.
         </p>
       </div>
       
-
       <!-- Descripción adicional del primer producto -->
       <p class="text-gray-600 text-left max-w-2xl">
         Este dispositivo cuenta con un sistema de actualización automática a través de su conexión a internet, asegurando que siempre esté equipado con las últimas funcionalidades. Además, su construcción a prueba de cortocircuitos y sobrecargas lo hace altamente seguro para ambientes residenciales y comerciales. 
@@ -47,6 +48,29 @@ import placa from "@assets/placa.jpg";
       <p class="text-gray-600 text-left max-w-2xl">
         Con su interfaz de usuario sencilla y su display de alta visibilidad, este dispositivo facilita la lectura de datos en cualquier condición de luz. Además, incluye indicadores LED que muestran el estado de la conexión Wi-Fi y el consumo actual. Esta funcionalidad es ideal para usuarios que desean un acceso rápido y fácil a la información de consumo energético sin depender exclusivamente de la aplicación móvil.
       </p>
+      <div class="flex flex-col items-center space-y-6 mt-8">
+        <h2 class="text-2xl font-semibold">Adquirir</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-2xl">
+          <!-- Tarjeta del LowerG Device -->
+          <div class="flex flex-col items-center border border-gray-300 rounded-lg p-6 space-y-4">
+            <Image src={device} alt="LowerG Device" class="rounded-lg shadow-lg w-36 h-40 object-cover" />
+            <div class="text-center">
+              <div class="text-lg font-medium text-gray-800">LowerG Device</div>
+              <div class="text-xl font-semibold text-gray-800 mt-1">$800</div>
+            </div>
+            <a href="#" class="block w-32 py-2 bg-purple-500 rounded-lg text-white font-medium text-center">Comprar</a>
+          </div>
+      
+          <!-- Tarjeta de la Aplicación web para monitoreo -->
+          <div class="flex flex-col items-center border border-gray-300 rounded-lg p-6 space-y-4">
+            <Image src={webApp} alt="Aplicación web para monitoreo" class="rounded-lg shadow-lg w-auto h-40 object-cover" />
+            <div class="text-center">
+              <div class="text-lg font-medium text-gray-800 mt-1">Aplicación web para el monitoreo del dispositivo</div>
+            </div>
+            <a href="/oferta" class="block w-32 py-2 bg-purple-500 rounded-lg text-white font-medium text-center">Ver planes</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </BaseLayout>
