@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import ImageFondo from "@assets/logo.png";
+import Button from "@components/common/Button.astro";
+---
+<section class="w-5/6 h-5/6 bg-white grid grid-cols-3 grid-rows-1 rounded-xl shadow-2xl shadow-black">
+    <figure class="col-span-2">
+        <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover bg-purple-500 rounded-l-xl" />
+    </figure>
+    <form action="" method="post" class="rounded-xl col-span-1 flex items-center justify-center">
+        <div class="w-4/6 h-4/5 flex flex-col justify-center items-center gap-8">
+            <h2 class="text-7xl font-bold flex justify-center items-center">
+                Lower<span class="text-pink-500">G</span>
+            </h2>
+            <h2 class="text-3xl font-bold flex justify-center items-center mt-6">
+                Crear cuenta
+            </h2>
+
+            <!-- Nombre (máximo 30 caracteres, sin números) -->
+            <input required type="text" id="nombre" placeholder="Nombre" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+
+            <!-- Apellido Paterno (máximo 30 caracteres, sin números) -->
+            <input required type="text" id="apellidoP" placeholder="Apellido Paterno" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+
+            <!-- Apellido Materno (máximo 30 caracteres, sin números) -->
+            <input required type="text" id="apellidoM" placeholder="Apellido Materno" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+
+            <!-- Edad (solo números, máximo 2 dígitos, entre 13 y 99) -->
+            <input required type="number" id="edad" placeholder="Edad" min="13" max="99" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="if(this.value.length>2) this.value = this.value.slice(0,2)">
+
+            <!-- País (máximo 50 caracteres, sin números) -->
+            <input required type="text" id="pais" placeholder="País" maxlength="50" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+
+            <!-- Correo (máximo 50 caracteres) -->
+            <input required type="email" placeholder="Correo" maxlength="50" class="w-full bg-transparent border-b-2 focus:outline-none">
+
+            <!-- Teléfono (solo números, máximo 10 caracteres) -->
+            <input required type="tel" id="telefono" placeholder="Teléfono" maxlength="10" pattern="[0-9]*" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10)">
+
+            <Button types="submit" id="login">
+                <p class="text-white">Registrar</p>
+            </Button>
+            <p class="font-bold flex justify-center items-center gap-2">
+                ¿Ya tienes una cuenta?
+                <a href="/indexApp" class="text-pink-500 hover:underline">LOGIN</a>
+            </p>            
+        </div>
+    </form>
+</section>
+
+
+<script>
+    const form = document.querySelector("form");
+    const nombre = document.getElementById("nombre") as HTMLInputElement;
+    const apellidoP = document.getElementById("apellidoP") as HTMLInputElement;
+    const apellidoM = document.getElementById("apellidoM") as HTMLInputElement;
+    const edad = document.getElementById("edad") as HTMLInputElement;
+    const pais = document.getElementById("pais") as HTMLInputElement;
+    const correo = document.querySelector("input[type='email") as HTMLInputElement;
+    const telefono = document.getElementById("password") as HTMLInputElement;
+
+    form?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        let isValid = true;
+        let errorMessage = "";
+
+        // Validación de edad (máximo 2 dígitos, entre 13 y 99)
+        const edadValue = parseInt(edad.value);
+        if (edad.value.length > 2 || isNaN(edadValue) || edadValue < 13 || edadValue > 99) {
+            isValid = false;
+            errorMessage += "La edad debe ser un número entre 13 y 99.\n";
+        }
+
+        if (isValid) {
+            form.submit();
+        } else {
+            alert(errorMessage);
+        }
+    });
+</script>

@@ -19,23 +19,23 @@ CREATE TABLE `usuario` (
   `nombre` varchar(30) NOT NULL,
   `apellidoP` varchar(30) NOT NULL,
   `apellidoM` varchar(30) NOT NULL,
-  `edad` int(3) NOT NULL,
+  `edad` int(2) NOT NULL,
   `pais` varchar(50) NOT NULL,
-  `telefono` varchar(10) NOT NULL,
   `correo` varchar(50) NOT NULL,
+  `telefono` varchar(10) NOT NULL,
   PRIMARY KEY (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Datos para la tabla `usuario`
 
-INSERT INTO `usuario` (`nombre`, `apellidoP`, `apellidoM`, `edad`, `pais`, `telefono`, `correo`) VALUES
-('Carlos', 'Ramírez', 'Soto', 28, 'México', '5512345678', 'carlos.ramirez@example.com'),
-('María', 'González', 'Lopez', 35, 'Argentina', '5412345678', 'maria.gonzalez@example.com'),
-('Juan', 'Pérez', 'Hernández', 42, 'Chile', '5612345678', 'juan.perez@example.com'),
-('Ana', 'Mendoza', 'Cruz', 23, 'Colombia', '5712345678', 'ana.mendoza@example.com'),
-('Luis', 'Martínez', 'Díaz', 31, 'Perú', '5112345678', 'luis.martinez@example.com'),
-('Sofía', 'López', 'Jiménez', 27, 'España', '3412345678', 'sofia.lopez@example.com'),
-('Miguel', 'Hernández', 'Morales', 29, 'México', '5512341234', 'miguel.hernandez@example.com'),
-('Laura', 'Cruz', 'Ortega', 34, 'Uruguay', '5981234567', 'laura.cruz@example.com'),
-('Roberto', 'Fernández', 'García', 39, 'Ecuador', '5931234567', 'roberto.fernandez@example.com'),
-('Isabel', 'Suárez', 'Paredes', 26, 'Bolivia', '5911234567', 'isabel.suarez@example.com');
+INSERT INTO `usuario` (`nombre`, `apellidoP`, `apellidoM`, `edad`, `pais`, `correo`, `telefono`) VALUES
+('Carlos', 'Ramírez', 'Soto', 28, 'México', 'carlos.ramirez@example.com', '5512345678'),
+('María', 'González', 'Lopez', 35, 'Argentina', 'maria.gonzalez@example.com', '5412345678'),
+('Juan', 'Pérez', 'Hernández', 42, 'Chile', 'juan.perez@example.com', '5612345678'),
+('Ana', 'Mendoza', 'Cruz', 23, 'Colombia', 'ana.mendoza@example.com', '5712345678'),
+('Luis', 'Martínez', 'Díaz', 31, 'Perú', 'luis.martinez@example.com', '5112345678'),
+('Sofía', 'López', 'Jiménez', 27, 'España', 'sofia.lopez@example.com', '3412345678'),
+('Miguel', 'Hernández', 'Morales', 29, 'México', 'miguel.hernandez@example.com', '5512341234'),
+('Laura', 'Cruz', 'Ortega', 34, 'Uruguay', 'laura.cruz@example.com', '5981234567'),
+('Roberto', 'Fernández', 'García', 39, 'Ecuador', 'roberto.fernandez@example.com', '5931234567'),
+('Isabel', 'Suárez', 'Paredes', 26, 'Bolivia', 'isabel.suarez@example.com', '5911234567');
