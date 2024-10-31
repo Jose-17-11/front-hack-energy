@@ -1,12 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BaseL from '../layouts/BaseLayout.astro';
----
+import UserTable from '../components/baseDatos/userTable';
+import pool from '../database/dataBase';
 
-<Layout title="LowerG">
+type User = {
+  idUsuario: number;
+  nombre: string;
+  apellidoP: string;
+  apellidoM: string;
+  edad: number;
+  pais: string;
+  correo: string;
+  telefono: string;
+};
+
+async function getUsers(): Promise<User[]> {
+  const [rows] = await pool.query('SELECT * FROM usuario');
+  return rows;
+}
+
+const users: User[] = await getUsers();
+---
+<Layout title="LowerG"> 
 	<main>
 		<BaseL>
-
+            <UserTable users={users} />
 		</BaseL>
 	</main>
 </Layout>

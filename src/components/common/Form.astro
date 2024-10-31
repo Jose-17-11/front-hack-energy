@@ -12,7 +12,7 @@ import Button from "@components/common/Button.astro";
             <h2 class="text-7xl font-bold flex justify-center items-center">
                 Lower<span class="text-pink-500">G</span>
             </h2>
-            <input required type="email" name="" id="email" placeholder="Email" class="w-full bg-transparent border-b-2 focus:outline-none">
+            <input required type="email" name="" id="correoLogin" placeholder="Email" class="w-full bg-transparent border-b-2 focus:outline-none">
             <input required type="password" name="" id="password" placeholder="Password" class="w-full bg-transparent border-b-2 focus:outline-none">
             <p class="w-full text-end">
                 <a href="#" class="text-purple-800 font-bold hover:text-purple-950 transition-all">Forget password</a>
@@ -33,7 +33,7 @@ import Button from "@components/common/Button.astro";
 </section>
 <script>
     const submit = document.getElementById('login');
-    const email = document.getElementById('email') as HTMLInputElement;
+    const email = document.getElementById('correoLogin') as HTMLInputElement;
     const password = document.getElementById('password') as HTMLInputElement;
 
     submit?.addEventListener('click', (event) => {
