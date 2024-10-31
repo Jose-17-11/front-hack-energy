@@ -21,8 +21,12 @@ import Button from "@components/common/Button.astro";
                 <p class="text-white">Login</p>
             </Button>
             <p class="font-bold flex justify-center items-center gap-2">
-                ¿Primera vez en LowerG?
-                <a href="/oferta" class="text-pink-500 hover:underline">Suscríbete ahora</a>
+                ¿No tienes una cuenta?
+                <a href="/SignUp" class="text-pink-500 hover:underline">Regístrate aquí</a>
+            </p>  
+            <p class="font-bold flex justify-center items-center gap-2">
+                
+                <a href="/oferta" class="text-pink-500 hover:underline">Conoce nuestros planes</a>
             </p>            
         </div>
     </form>
@@ -37,6 +41,8 @@ import Button from "@components/common/Button.astro";
 
         if (email.value === "guevara@midu.com" && password.value === "1234") {
             window.location.href = "/panel-edificios"; 
+        } else if (email.value === "admin@midu.com" && password.value === "1234") {
+            window.location.href = "/oferta"; 
         } else {
             alert("Ingrese bien los datos.");
         }
