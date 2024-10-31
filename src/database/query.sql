@@ -29,13 +29,13 @@ CREATE TABLE `usuario` (
 -- Datos para la tabla `usuario`
 
 INSERT INTO `usuario` (`nombre`, `apellidoP`, `apellidoM`, `edad`, `pais`, `correo`, `telefono`) VALUES
-('Carlos', 'Ramírez', 'Soto', 28, 'México', 'carlos.ramirez@example.com', '5512345678'),
-('María', 'González', 'Lopez', 35, 'Argentina', 'maria.gonzalez@example.com', '5412345678'),
-('Juan', 'Pérez', 'Hernández', 42, 'Chile', 'juan.perez@example.com', '5612345678'),
+('Carlos', 'Ramirez', 'Soto', 28, 'México', 'carlos.ramirez@example.com', '5512345678'),
+('Maria', 'Gonzalez', 'Lopez', 35, 'Argentina', 'maria.gonzalez@example.com', '5412345678'),
+('Juan', 'Perez', 'Hernández', 42, 'Chile', 'juan.perez@example.com', '5612345678'),
 ('Ana', 'Mendoza', 'Cruz', 23, 'Colombia', 'ana.mendoza@example.com', '5712345678'),
-('Luis', 'Martínez', 'Díaz', 31, 'Perú', 'luis.martinez@example.com', '5112345678'),
-('Sofía', 'López', 'Jiménez', 27, 'España', 'sofia.lopez@example.com', '3412345678'),
-('Miguel', 'Hernández', 'Morales', 29, 'México', 'miguel.hernandez@example.com', '5512341234'),
+('Luis', 'Martinez', 'Díaz', 31, 'Perú', 'luis.martinez@example.com', '5112345678'),
+('Sofia', 'Lopez', 'Jiménez', 27, 'España', 'sofia.lopez@example.com', '3412345678'),
+('Miguel', 'Hernandez', 'Morales', 29, 'México', 'miguel.hernandez@example.com', '5512341234'),
 ('Laura', 'Cruz', 'Ortega', 34, 'Uruguay', 'laura.cruz@example.com', '5981234567'),
-('Roberto', 'Fernández', 'García', 39, 'Ecuador', 'roberto.fernandez@example.com', '5931234567'),
-('Isabel', 'Suárez', 'Paredes', 26, 'Bolivia', 'isabel.suarez@example.com', '5911234567');
+('Roberto', 'Fernandez', 'Garcia', 39, 'Ecuador', 'roberto.fernandez@example.com', '5931234567'),
+('Isabel', 'Suarez', 'Paredes', 26, 'Bolivia', 'isabel.suarez@example.com', '5911234567');
