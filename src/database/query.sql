@@ -7,7 +7,7 @@ use lowerg;
 
 -- Base de datos: lowerg
 
--- Estructura de tabla `usuario`
+-- Estructura de tabla usuario
 
 CREATE TABLE `usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
@@ -21,7 +21,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Datos para la tabla `usuario`
+-- Datos para la tabla usuario
 
 INSERT INTO `usuario` (`nombre`, `apellidoP`, `apellidoM`, `edad`, `pais`, `correo`, `telefono`) VALUES
 ('Carlos', 'Ramirez', 'Soto', 28, 'México', 'carlos.ramirez@example.com', '5512345678'),
