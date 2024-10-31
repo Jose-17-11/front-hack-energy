@@ -1,11 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
 -- Servidor: mariadb
--- Tiempo de generación: 23-02-2024 a las 03:11:12
 -- Versión del servidor: 11.2.3-MariaDB-1:11.2.3+maria~ubu2204
--- Versión de PHP: 8.2.8
+-- mariadb -uroot -ptherootpass
 
 CREATE DATABASE lowerg;
 use lowerg;
