@@ -29,6 +29,12 @@ import pool from '../database/conexion';
             </Button>           
           </div>
         </form>
+        <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+          <div class="bg-white p-4 rounded-lg shadow-lg w-1/3">
+            <h2 id="modal-title" class="text-xl text-purple-600 font-bold mb-4 text-center">Título del Modal</h2>
+            <p id="modal-message" class="mb-4 text-center">Mensaje del Modal</p>
+          </div>
+        </div>        
       </section>
     </BaseL>
   </main>
@@ -38,19 +44,24 @@ import pool from '../database/conexion';
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalMessage = document.getElementById("modal-message");
+    const modalClose = document.getElementById("modal-close");
+
     if (!form) return;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       // Obtener valores de los inputs
-      const nombre = (document.getElementById("nombre") as HTMLInputElement).value;
-      const apellidoP = (document.getElementById("apellidoP") as HTMLInputElement).value;
-      const apellidoM = (document.getElementById("apellidoM") as HTMLInputElement).value;
-      const edad = parseInt((document.getElementById("edad") as HTMLInputElement).value);
-      const pais = (document.getElementById("pais") as HTMLInputElement).value;
-      const correo = (document.getElementById("correo") as HTMLInputElement).value;
-      const telefono = (document.getElementById("telefono") as HTMLInputElement).value;
+      const nombre = document.getElementById("nombre").value;
+      const apellidoP = document.getElementById("apellidoP").value;
+      const apellidoM = document.getElementById("apellidoM").value;
+      const edad = parseInt(document.getElementById("edad").value);
+      const pais = document.getElementById("pais").value;
+      const correo = document.getElementById("correo").value;
+      const telefono = document.getElementById("telefono").value;
 
       let isValid = true;
       let errorMessage = "";
@@ -73,26 +84,38 @@ import pool from '../database/conexion';
         };
 
         try {
-            const response = await fetch('http://localhost:5000/api/addUser', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
-            });
+          const response = await fetch('http://localhost:5000/api/addUser', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
 
-
-            if (response.ok) {
-                alert("Usuario agregado correctamente");
-                window.location.href = "/adminUser"; // Redirige a la página de administración
-            } else {
-                alert("Error al agregar el usuario");
-            }
+          if (response.ok) {
+            showModal("Éxito", "Usuario agregado correctamente", "success");
+            setTimeout(() => {
+              window.location.href = "/adminUser";
+            }, 2000); // Redirige después de 2 segundos
+          } else {
+            showModal("Error", "Error al agregar el usuario", "error");
+          }
         } catch (error) {
           console.error("Error:", error);
-          alert("Error al agregar el usuario");
+          showModal("Error", "Error al agregar el usuario", "error");
         }
       } else {
-        alert(errorMessage);
+        showModal("Advertencia", errorMessage, "warning");
       }
     });
+
+    modalClose.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    function showModal(title, message, type) {
+      modalTitle.textContent = title;
+      modalMessage.textContent = message;
+      modal.classList.remove("hidden");
+    }
   });
 </script>
+

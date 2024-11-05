@@ -28,73 +28,96 @@ import pool from '../database/conexion';
             </Button>           
           </div>
         </form>
+        <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+          <div class="bg-white p-4 rounded-lg shadow-lg w-1/3">
+            <h2 id="modal-title" class="text-xl text-purple-600 font-bold mb-4 text-center">Título del Modal</h2>
+            <p id="modal-message" class="mb-4 text-center">Mensaje del Modal</p>
+          </div>
+        </div>        
       </section>
     </BaseL>
   </main>
 </Layout>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      // Obtén el parámetro `id` de la URL
-      const userId = new URLSearchParams(window.location.search).get("id");
-  
-      if (!userId) {
-        alert("No se proporcionó un ID de usuario");
-        return;
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalMessage = document.getElementById("modal-message");
+    const modalClose = document.getElementById("modal-close");
+
+    // Obtén el parámetro `id` de la URL
+    const userId = new URLSearchParams(window.location.search).get("id");
+
+    if (!userId) {
+      showModal("Error", "No se proporcionó un ID de usuario", "error");
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/getUser/${userId}`);
+      if (response.ok) {
+        const user = await response.json();
+        document.getElementById("nombre").value = user.nombre;
+        document.getElementById("apellidoP").value = user.apellidoP;
+        document.getElementById("apellidoM").value = user.apellidoM;
+        document.getElementById("edad").value = user.edad;
+        document.getElementById("pais").value = user.pais;
+        document.getElementById("correo").value = user.correo;
+        document.getElementById("telefono").value = user.telefono;
+      } else {
+        showModal("Error", "Error al obtener los datos del usuario", "error");
       }
-  
+    } catch (error) {
+      console.error("Error:", error);
+      showModal("Error", "Error al obtener los datos del usuario", "error");
+    }
+
+    const form = document.querySelector("form");
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const data = {
+        nombre: document.getElementById("nombre").value,
+        apellidoP: document.getElementById("apellidoP").value,
+        apellidoM: document.getElementById("apellidoM").value,
+        edad: parseInt(document.getElementById("edad").value),
+        pais: document.getElementById("pais").value,
+        correo: document.getElementById("correo").value,
+        telefono: document.getElementById("telefono").value,
+      };
+
       try {
-        const response = await fetch(`http://localhost:5000/api/getUser/${userId}`);
+        const response = await fetch(`http://localhost:5000/api/updateUser/${userId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
         if (response.ok) {
-          const user = await response.json();
-          document.getElementById("nombre").value = user.nombre;
-          document.getElementById("apellidoP").value = user.apellidoP;
-          document.getElementById("apellidoM").value = user.apellidoM;
-          document.getElementById("edad").value = user.edad;
-          document.getElementById("pais").value = user.pais;
-          document.getElementById("correo").value = user.correo;
-          document.getElementById("telefono").value = user.telefono;
+          showModal("Éxito", "Usuario actualizado correctamente", "success");
+          setTimeout(() => {
+            window.location.href = "/adminUser"; // Redirige a la página de administración
+          }, 2000);
         } else {
-          alert("Error al obtener los datos del usuario");
+          showModal("Error", "Error al actualizar el usuario", "error");
         }
       } catch (error) {
         console.error("Error:", error);
-        alert("Error al obtener los datos del usuario");
+        showModal("Error", "Error al actualizar el usuario", "error");
       }
-  
-      const form = document.querySelector("form");
-      form?.addEventListener("submit", async (event) => {
-        event.preventDefault();
-  
-        const data = {
-          nombre: document.getElementById("nombre").value,
-          apellidoP: document.getElementById("apellidoP").value,
-          apellidoM: document.getElementById("apellidoM").value,
-          edad: parseInt(document.getElementById("edad").value),
-          pais: document.getElementById("pais").value,
-          correo: document.getElementById("correo").value,
-          telefono: document.getElementById("telefono").value,
-        };
-  
-        try {
-          const response = await fetch(`http://localhost:5000/api/updateUser/${userId}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
-  
-          if (response.ok) {
-            alert("Usuario actualizado correctamente");
-            window.location.href = "/adminUser"; // Redirige a la página de administración
-          } else {
-            alert("Error al actualizar el usuario");
-          }
-        } catch (error) {
-          console.error("Error:", error);
-          alert("Error al actualizar el usuario");
-        }
-      });
     });
-  </script>
-  
+
+    modalClose.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    function showModal(title, message, type) {
+      modalTitle.textContent = title;
+      modalMessage.textContent = message;
+      modal.classList.remove("hidden");
+    }
+  });
+</script>
+
   
