@@ -1,38 +1,39 @@
 ---
 import Button from "@components/common/Button.astro";
 import Layout from '../layouts/Layout.astro';
-import BaseL from '../layouts/BaseLayout.astro';
+import BaseL from '../layouts/BaseAdmin.astro';
 import pool from '../database/conexion';
 
 ---
 <Layout title="LowerG"> 
-	<main>
-		<BaseL>
-      <section class="w-full h-full flex items-center justify-center mt-16">
-        <form class="rounded-xl col-span-1 flex items-center justify-center w-full">
-            <div class="w-96 h-full flex flex-col justify-center items-center gap-6">
-              <h1 class="text-2xl font-semibold text-center">
-                Administración de Usuarios
-              </h1>
-              <h3 class="text-3xl font-semibold text-center mt-2">
-                  Crear usuario
-              </h3>
-              <input required id="nombre" type="text" name="nombre" placeholder="Nombre" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none">
-              <input required id="apellidoP" type="text" name="apellidoP" placeholder="Apellido Paterno" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none">
-              <input required id="apellidoM" type="text" name="apellidoM" placeholder="Apellido Materno" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none">
-              <input required id="edad" type="number" name="edad" placeholder="Edad" min="13" max="99" class="w-full bg-transparent border-b-2 focus:outline-none">
-              <input required id="pais" type="text" name="pais" placeholder="País" maxlength="50" class="w-full bg-transparent border-b-2 focus:outline-none">
-              <input required id="correo" type="email" name="correo" placeholder="Correo" maxlength="50" class="w-full bg-transparent border-b-2 focus:outline-none">
-              <input required id="telefono" type="tel" name="telefono" placeholder="Teléfono" maxlength="10" pattern="[0-9]*" class="w-full bg-transparent border-b-2 focus:outline-none">
-              <Button types="submit" class="w-full mt-4">
-                  <p class="text-white">Agregar</p>
-              </Button>           
-            </div>
+  <main>
+    <BaseL>
+      <section class="w-full h-auto flex items-center justify-center mt-3">
+        <form class="w-full max-w-lg rounded-xl shadow-lg bg-white pl-14 pr-14 pt-4 pb-4 border border-gray-200">
+          <div class="w-full flex flex-col gap-5">
+            <h1 class="text-2xl font-semibold text-center">
+              Administración de usuarios
+            </h1>
+            <h2 class="text-xl font-semibold text-center text-gray-800">
+              Agregar nuevo usuario
+            </h2>
+            <input required id="nombre" type="text" name="nombre" placeholder="Nombre" maxlength="30" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <input required id="apellidoP" type="text" name="apellidoP" placeholder="Apellido Paterno" maxlength="30" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <input required id="apellidoM" type="text" name="apellidoM" placeholder="Apellido Materno" maxlength="30" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <input required id="edad" type="number" name="edad" placeholder="Edad" min="13" max="99" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <input required id="pais" type="text" name="pais" placeholder="País" maxlength="50" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <input required id="correo" type="email" name="correo" placeholder="Correo" maxlength="50" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <input required id="telefono" type="tel" name="telefono" placeholder="Teléfono" maxlength="10" pattern="[0-9]*" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <Button types="submit" class="w-full bg-pink-500 hover:bg-pink-600 font-bold py-2 rounded-lg transition-all duration-300">
+                <p class="text-white">Agregar</p>
+            </Button>           
+          </div>
         </form>
       </section>
-		</BaseL>
-	</main>
+    </BaseL>
+  </main>
 </Layout>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
