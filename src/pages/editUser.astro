@@ -1,0 +1,72 @@
+---
+import Button from "@components/common/Button.astro";
+import Layout from '../layouts/Layout.astro';
+import BaseL from '../layouts/BaseLayout.astro';
+import pool from '../database/conexion';
+---
+<Layout title="LowerG"> 
+	<main>
+		<BaseL>
+            <section class="w-full h-full flex items-center justify-center mt-20">
+                <form action="" method="post" class="rounded-xl col-span-1 flex items-center justify-center w-full">
+                    <div class="w-96 h-full flex flex-col justify-center items-center gap-6">
+                        <h1 class="text-2xl font-semibold text-center">
+                            Administración de Usuarios
+                        </h1>
+                        <h3 class="text-3xl font-semibold text-center mt-2">
+                            Editar usuario
+                        </h3>
+                
+                        <input required type="text" id="nombre" placeholder="Nombre" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+                
+                        <input required type="text" id="apellidoP" placeholder="Apellido Paterno" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+                
+                        <input required type="text" id="apellidoM" placeholder="Apellido Materno" maxlength="30" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+                
+                        <input required type="number" id="edad" placeholder="Edad" min="13" max="99" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="if(this.value.length>2) this.value = this.value.slice(0,2)">
+                
+                        <input required type="text" id="pais" placeholder="País" maxlength="50" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[0-9]/g, '')">
+                
+                        <input required type="email" placeholder="Correo" maxlength="50" class="w-full bg-transparent border-b-2 focus:outline-none">
+                
+                        <input required type="tel" id="telefono" placeholder="Telefono" maxlength="10" pattern="[0-9]*" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10)">
+                
+                        <Button types="submit" id="login" class="w-full mt-4">
+                            <p class="text-white">Actualizar</p>
+                        </Button>           
+                    </div>
+                </form>
+            </section>
+		</BaseL>
+	</main>
+</Layout>
+<script>
+    const form = document.querySelector("form");
+    const nombre = document.getElementById("nombre") as HTMLInputElement;
+    const apellidoP = document.getElementById("apellidoP") as HTMLInputElement;
+    const apellidoM = document.getElementById("apellidoM") as HTMLInputElement;
+    const edad = document.getElementById("edad") as HTMLInputElement;
+    const pais = document.getElementById("pais") as HTMLInputElement;
+    const correo = document.querySelector("input[type='email") as HTMLInputElement;
+    const telefono = document.getElementById("password") as HTMLInputElement;
+
+    form?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        let isValid = true;
+        let errorMessage = "";
+
+        // Validación de edad (máximo 2 dígitos, entre 13 y 99)
+        const edadValue = parseInt(edad.value);
+        if (edad.value.length > 2 || isNaN(edadValue) || edadValue < 13 || edadValue > 99) {
+            isValid = false;
+            errorMessage += "La edad debe ser un número entre 13 y 99.\n";
+        }
+
+        if (isValid) {
+            form.submit();
+        } else {
+            alert(errorMessage);
+        }
+    });
+</script>

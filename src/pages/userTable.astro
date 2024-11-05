@@ -1,0 +1,67 @@
+---
+export interface Props {
+  users: Array<{
+    idUsuario: number;
+    nombre: string;
+    apellidoP: string;
+    apellidoM: string;
+    edad: number;
+    pais: string;
+    correo: string;
+    telefono: string;
+  }>;
+}
+
+const { users } = Astro.props;
+---
+
+<div class="overflow-x-auto w-full max-w-5xl mx-auto mt-3">
+  <div class="flex flex-col items-center mb-4">
+    <h1 class="text-2xl font-semibold text-center mb-4">
+      Administración de Usuarios
+    </h1>
+    <a href="/addUser" class="bg-pink-500 text-white px-4 py-1 rounded">
+      Agregar usuario
+    </a>
+  </div>
+  <table class="min-w-full border mt-1 text-center">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="py-2 px-4">Id</th>
+        <th class="py-2 px-4">Nombre</th>
+        <th class="py-2 px-4">Apellido Paterno</th>
+        <th class="py-2 px-4">Apellido Materno</th>
+        <th class="py-2 px-4">Edad</th>
+        <th class="py-2 px-4">País</th>
+        <th class="py-2 px-4">Correo</th>
+        <th class="py-2 px-4">Teléfono</th>
+        <th class="py-2 px-4">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {users.map((user) => (
+        <tr key={user.idUsuario} class="border-b hover:bg-gray-100">
+          <td class="py-2 px-4">{user.idUsuario}</td>
+          <td class="py-2 px-4">{user.nombre}</td>
+          <td class="py-2 px-4">{user.apellidoP}</td>
+          <td class="py-2 px-4">{user.apellidoM}</td>
+          <td class="py-2 px-4">{user.edad}</td>
+          <td class="py-2 px-4">{user.pais}</td>
+          <td class="py-2 px-4">{user.correo}</td>
+          <td class="py-2 px-4">{user.telefono}</td>
+          <td class="flex justify-center py-2 space-x-2">
+            <a href="/editUser" class="bg-green-500 text-white px-2 py-1 rounded">
+                Edit
+            </a>
+            <button
+              class="bg-red-500 text-white px-2 py-1 rounded"
+              onClick={() => deleteUser(user.idUsuario)}
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

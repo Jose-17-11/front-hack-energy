@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BaseL from '../layouts/BaseLayout.astro';
-import UserTable from '../components/baseDatos/userTable';
-import pool from '../database/dataBase';
+import UserTable from '../../src/pages/userTable.astro';
+import pool from '../database/conexion';
 
 type User = {
   idUsuario: number;
