@@ -43,32 +43,61 @@ import Button from "@components/common/Button.astro";
 </section>
 
 <script>
-    const form = document.querySelector("form");
-    const nombre = document.getElementById("nombre") as HTMLInputElement;
-    const apellidoP = document.getElementById("apellidoP") as HTMLInputElement;
-    const apellidoM = document.getElementById("apellidoM") as HTMLInputElement;
-    const edad = document.getElementById("edad") as HTMLInputElement;
-    const pais = document.getElementById("pais") as HTMLInputElement;
-    const correo = document.querySelector("input[type='email") as HTMLInputElement;
-    const telefono = document.getElementById("password") as HTMLInputElement;
-
-    form?.addEventListener("submit", (event) => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      const nombre = document.getElementById("nombre");
+      const apellidoP = document.getElementById("apellidoP");
+      const apellidoM = document.getElementById("apellidoM");
+      const edad = document.getElementById("edad");
+      const pais = document.getElementById("pais");
+      const correo = document.querySelector("input[type='email']");
+      const telefono = document.getElementById("telefono");
+  
+      form?.addEventListener("submit", async (event) => {
         event.preventDefault();
-
+  
         let isValid = true;
         let errorMessage = "";
-
-        // Validación de edad (máximo 2 dígitos, entre 13 y 99)
+  
+        // Validación de edad
         const edadValue = parseInt(edad.value);
-        if (edad.value.length > 2 || isNaN(edadValue) || edadValue < 13 || edadValue > 99) {
-            isValid = false;
-            errorMessage += "La edad debe ser un número entre 13 y 99.\n";
+        if (isNaN(edadValue) || edadValue < 13 || edadValue > 99) {
+          isValid = false;
+          errorMessage += "La edad debe ser un número entre 13 y 99.\n";
         }
-
+  
         if (isValid) {
-            form.submit();
+          const data = {
+            nombre: nombre.value,
+            apellidoP: apellidoP.value,
+            apellidoM: apellidoM.value,
+            edad: edadValue,
+            pais: pais.value,
+            correo: correo.value,
+            telefono: telefono.value,
+          };
+  
+          try {
+            const response = await fetch('http://localhost:5000/api/addUser', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data),
+            });
+  
+            if (response.ok) {
+              alert("Usuario registrado correctamente");
+              window.location.href = "/indexApp"; // Redirige al login o a la página principal
+            } else {
+              alert("Error al registrar el usuario");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Error al registrar el usuario");
+          }
         } else {
-            alert(errorMessage);
+          alert(errorMessage);
         }
+      });
     });
 </script>
+  

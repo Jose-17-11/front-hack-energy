@@ -50,12 +50,15 @@ const { users } = Astro.props;
           <td class="py-2 px-4">{user.correo}</td>
           <td class="py-2 px-4">{user.telefono}</td>
           <td class="flex justify-center py-2 space-x-2">
-            <a href="/editUser" class="bg-green-500 text-white px-2 py-1 rounded">
-                Edit
+            <a
+              href={`/editUser?id=${user.idUsuario}`}
+              class="bg-green-500 text-white px-2 py-1 rounded"
+            >
+              Edit
             </a>
             <button
               class="bg-red-500 text-white px-2 py-1 rounded"
-              onClick={() => deleteUser(user.idUsuario)}
+              data-delete-id={user.idUsuario}
             >
               Del
             </button>
@@ -65,3 +68,39 @@ const { users } = Astro.props;
     </tbody>
   </table>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    async function deleteUser(idUsuario) {
+      if (confirm("¿Estás seguro de que quieres eliminar este usuario?")) {
+        try {
+          const response = await fetch(`http://localhost:5000/api/deleteUser/${idUsuario}`, {
+            method: 'DELETE',
+          });
+
+          if (response.ok) {
+            alert("Usuario eliminado correctamente");
+            // Recarga la página para actualizar la lista de usuarios
+            window.location.reload();
+          } else {
+            alert("Error al eliminar el usuario");
+          }
+        } catch (error) {
+          console.error("Error al realizar la solicitud:", error);
+          alert("Error al eliminar el usuario");
+        }
+      }
+    }
+
+    // Vincular la función de eliminación con cada botón de eliminar
+    document.querySelectorAll("button[data-delete-id]").forEach(button => {
+      button.addEventListener("click", () => {
+        const userId = button.getAttribute("data-delete-id");
+        deleteUser(userId);
+      });
+    });
+  });
+  function editUser(idUsuario) {
+    // Redirigir a la página de edición con el ID como parte de la URL o en los parámetros
+    window.location.href = `/editUser?id=${idUsuario}`;
+  }
+</script>
