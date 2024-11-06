@@ -3,11 +3,22 @@ import pool from "../../database/conexion";
 export async function post({ request }) {
   try {
     const data = await request.json();
-    const { nombre, apellidoP, apellidoM, edad, pais, correo, telefono } = data;
+    console.log(data); // Esto debería mostrar todos los campos, incluyendo 'passw'
+
+    const {
+      nombre,
+      apellidoP,
+      apellidoM,
+      edad,
+      pais,
+      correo,
+      telefono,
+      passw,
+    } = data;
 
     await pool.query(
-      "INSERT INTO usuario (nombre, apellidoP, apellidoM, edad, pais, correo, telefono) VALUES (?, ?, ?, ?, ?, ?, ?)",
-      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono]
+      "INSERT INTO usuario (nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw]
     );
 
     return new Response(JSON.stringify({ success: true }), {

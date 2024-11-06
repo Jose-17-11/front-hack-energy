@@ -24,6 +24,7 @@ import pool from '../database/conexion';
             <input required id="pais" type="text" name="pais" placeholder="País" maxlength="50" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
             <input required id="correo" type="email" name="correo" placeholder="Correo" maxlength="50" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
             <input required id="telefono" type="tel" name="telefono" placeholder="Teléfono" maxlength="10" pattern="[0-9]*" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <input required id="passw" type="text" name="passw" placeholder="Contraseña" maxlength="50" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
             <Button types="submit" class="w-full bg-pink-500 hover:bg-pink-600 font-bold py-2 rounded-lg transition-all duration-300">
                 <p class="text-white">Agregar</p>
             </Button>           
@@ -62,6 +63,7 @@ import pool from '../database/conexion';
       const pais = document.getElementById("pais").value;
       const correo = document.getElementById("correo").value;
       const telefono = document.getElementById("telefono").value;
+      const passw = document.getElementById("passw").value;
 
       let isValid = true;
       let errorMessage = "";
@@ -81,6 +83,7 @@ import pool from '../database/conexion';
           pais,
           correo,
           telefono,
+          passw,  // Asegúrate de que passw se esté enviando
         };
 
         try {

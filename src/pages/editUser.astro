@@ -23,6 +23,7 @@ import pool from '../database/conexion';
             <input required id="pais" type="text" name="pais" placeholder="País" maxlength="50" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             <input required id="correo" type="email" name="correo" placeholder="Correo" maxlength="50" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             <input required id="telefono" type="tel" name="telefono" placeholder="Teléfono" maxlength="10" pattern="[0-9]*" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input required id="passw" type="text" name="passw" placeholder="Contraseña" maxlength="50" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             <Button types="submit" class="w-full bg-pink-500 hover:bg-pink-600 font-bold py-2 rounded-lg transition-all duration-300">
                 <p class="text-white">Actualizar</p>
             </Button>           
@@ -46,7 +47,7 @@ import pool from '../database/conexion';
     const modalMessage = document.getElementById("modal-message");
     const modalClose = document.getElementById("modal-close");
 
-    // Obtén el parámetro `id` de la URL
+    // Obtén el parámetro id de la URL
     const userId = new URLSearchParams(window.location.search).get("id");
 
     if (!userId) {
@@ -65,6 +66,7 @@ import pool from '../database/conexion';
         document.getElementById("pais").value = user.pais;
         document.getElementById("correo").value = user.correo;
         document.getElementById("telefono").value = user.telefono;
+        document.getElementById("passw").value = user.passw;
       } else {
         showModal("Error", "Error al obtener los datos del usuario", "error");
       }
@@ -85,6 +87,7 @@ import pool from '../database/conexion';
         pais: document.getElementById("pais").value,
         correo: document.getElementById("correo").value,
         telefono: document.getElementById("telefono").value,
+        passw: document.getElementById("passw").value,
       };
 
       try {

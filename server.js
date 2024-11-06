@@ -13,12 +13,12 @@ app.use(bodyParser.json());
 // Rutas API
 //Ruta add user
 app.post("/api/addUser", async (req, res) => {
-  const { nombre, apellidoP, apellidoM, edad, pais, correo, telefono } =
+  const { nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw } =
     req.body;
   try {
     await pool.query(
-      "INSERT INTO usuario (nombre, apellidoP, apellidoM, edad, pais, correo, telefono) VALUES (?, ?, ?, ?, ?, ?, ?)",
-      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono]
+      "INSERT INTO usuario (nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw]
     );
     res
       .status(201)
@@ -32,13 +32,13 @@ app.post("/api/addUser", async (req, res) => {
 // Ruta update user
 app.put("/api/updateUser/:id", async (req, res) => {
   const id = req.params.id;
-  const { nombre, apellidoP, apellidoM, edad, pais, correo, telefono } =
+  const { nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw } =
     req.body;
 
   try {
     const [result] = await pool.query(
-      "UPDATE usuario SET nombre = ?, apellidoP = ?, apellidoM = ?, edad = ?, pais = ?, correo = ?, telefono = ? WHERE idUsuario = ?",
-      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono, id]
+      "UPDATE usuario SET nombre = ?, apellidoP = ?, apellidoM = ?, edad = ?, pais = ?, correo = ?, telefono = ?, passw = ? WHERE idUsuario = ?",
+      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw, id]
     );
 
     if (result.affectedRows > 0) {

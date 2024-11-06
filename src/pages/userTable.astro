@@ -9,6 +9,7 @@ export interface Props {
     pais: string;
     correo: string;
     telefono: string;
+    passw: string;
   }>;
 }
 
@@ -35,6 +36,7 @@ const { users } = Astro.props;
         <th class="py-2 px-4">País</th>
         <th class="py-2 px-4">Correo</th>
         <th class="py-2 px-4">Teléfono</th>
+        <th class="py-2 px-4">Contraseña</th>
         <th class="py-2 px-4">Acciones</th>
       </tr>
     </thead>
@@ -49,6 +51,7 @@ const { users } = Astro.props;
           <td class="py-2 px-4">{user.pais}</td>
           <td class="py-2 px-4">{user.correo}</td>
           <td class="py-2 px-4">{user.telefono}</td>
+          <td class="py-2 px-4">{user.passw}</td>
           <td class="flex justify-center py-2 space-x-2">
             <a
               href={`/editUser?id=${user.idUsuario}`}
