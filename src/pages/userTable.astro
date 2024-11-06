@@ -1,4 +1,7 @@
 ---
+import { FaTrashAlt } from "react-icons/fa";
+import { FaPencil } from "react-icons/fa6";
+
 export interface Props {
   users: Array<{
     idUsuario: number;
@@ -16,17 +19,17 @@ export interface Props {
 const { users } = Astro.props;
 ---
 
-<div class="overflow-x-auto w-full max-w-5xl mx-auto mt-3">
+<div class="overflow-x-auto w-full max-w-6xl mx-auto mt-3">
   <div class="flex flex-col items-center mb-4">
     <h1 class="text-2xl font-semibold text-center mb-4">
       Administración de Usuarios
     </h1>
-    <a href="/addUser" class="bg-pink-500 hover:bg-pink-700 text-white font-semibold px-4 py-2 rounded transition-all duration-300 shadow-md">
+    <a href="/addUser" class=" bg-purple-500 hover:bg-purple-700 text-white font-semibold px-4 py-2 rounded transition-all duration-300 shadow-md">
       Agregar usuario
     </a>
   </div>
   <table class="min-w-full border mt-1 text-center rounded-2xl">
-    <thead class="bg-purple-500">
+    <thead class="bg-pink-700 text-white">
       <tr>
         <th class="py-2 px-4">Id</th>
         <th class="py-2 px-4">Nombre</th>
@@ -51,19 +54,19 @@ const { users } = Astro.props;
           <td class="py-2 px-4">{user.pais}</td>
           <td class="py-2 px-4">{user.correo}</td>
           <td class="py-2 px-4">{user.telefono}</td>
-          <td class="py-2 px-4">{user.passw}</td>
+          <td class="py-2 px-4">{'*'.repeat(user.passw.length)}</td>
           <td class="flex justify-center py-2 space-x-2">
             <a
               href={`/editUser?id=${user.idUsuario}`}
-              class="bg-green-500 hover:bg-green-600 text-white px-2 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md"
+              class="bg-green-500 hover:bg-green-600 text-white px-2 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md flex items-center"
             >
-              Edit
+              <FaPencil />
             </a>
             <button
-              class="bg-red-500 hover:bg-red-600 text-white px-2 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md"
+              class="bg-red-500 hover:bg-red-600 text-white px-2 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md flex items-center"
               data-delete-id={user.idUsuario}
             >
-              Del
+              <FaTrashAlt />
             </button>
           </td>
         </tr>

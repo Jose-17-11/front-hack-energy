@@ -32,13 +32,13 @@ app.post("/api/addUser", async (req, res) => {
 // Ruta update user
 app.put("/api/updateUser/:id", async (req, res) => {
   const id = req.params.id;
-  const { nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw } =
+  const { nombre, apellidoP, apellidoM, edad, pais, correo, telefono } =
     req.body;
 
   try {
     const [result] = await pool.query(
-      "UPDATE usuario SET nombre = ?, apellidoP = ?, apellidoM = ?, edad = ?, pais = ?, correo = ?, telefono = ?, passw = ? WHERE idUsuario = ?",
-      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono, passw, id]
+      "UPDATE usuario SET nombre = ?, apellidoP = ?, apellidoM = ?, edad = ?, pais = ?, correo = ?, telefono = ? WHERE idUsuario = ?",
+      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono, id]
     );
 
     if (result.affectedRows > 0) {
@@ -101,6 +101,33 @@ app.delete("/api/deleteUser/:id", async (req, res) => {
   } catch (error) {
     console.error("Error al eliminar el usuario:", error);
     res.status(500).send({ success: false, error: error.message });
+  }
+});
+
+// Ruta de autenticación de usuario
+app.post("/api/login", async (req, res) => {
+  const { correo, passw } = req.body;
+
+  try {
+    const [rows] = await pool.query(
+      "SELECT * FROM usuario WHERE correo = ? AND passw = ?",
+      [correo, passw]
+    );
+
+    if (rows.length > 0) {
+      // Usuario autenticado correctamente
+      res
+        .status(200)
+        .json({ success: true, message: "Login exitoso", user: rows[0] });
+    } else {
+      // Credenciales incorrectas
+      res
+        .status(401)
+        .json({ success: false, message: "Correo o contraseña incorrectos" });
+    }
+  } catch (error) {
+    console.error("Error al autenticar el usuario:", error);
+    res.status(500).json({ success: false, error: error.message });
   }
 });
 

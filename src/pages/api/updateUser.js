@@ -10,23 +10,12 @@ export async function put({ request }) {
     pais,
     correo,
     telefono,
-    passw,
   } = await request.json();
 
   try {
     const [result] = await pool.query(
-      "UPDATE usuario SET nombre = ?, apellidoP = ?, apellidoM = ?, edad = ?, pais = ?, correo = ?, telefono = ?, passw = ? WHERE idUsuario = ?",
-      [
-        nombre,
-        apellidoP,
-        apellidoM,
-        edad,
-        pais,
-        correo,
-        telefono,
-        passw,
-        idUsuario,
-      ]
+      "UPDATE usuario SET nombre = ?, apellidoP = ?, apellidoM = ?, edad = ?, pais = ?, correo = ?, telefono = ? WHERE idUsuario = ?",
+      [nombre, apellidoP, apellidoM, edad, pais, correo, telefono, idUsuario]
     );
 
     if (result.affectedRows > 0) {
