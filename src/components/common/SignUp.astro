@@ -9,7 +9,7 @@ import Button from "@components/common/Button.astro";
         <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover bg-purple-500 rounded-l-xl" />
     </figure>
     <form action="" method="post" class="rounded-xl col-span-1 flex items-center justify-center">
-        <div class="w-4/5 h-auto flex flex-col justify-center items-center gap-4">
+        <div class="w-4/5 h-auto flex flex-col justify-center items-center gap-3">
             <h2 class="text-5xl font-bold text-center">
                 Lower<span class="text-pink-500">G</span>
             </h2>
@@ -46,16 +46,36 @@ import Button from "@components/common/Button.astro";
             </p>            
         </div>
     </form>
-    
-    <!-- Modal de Error -->
-    <div id="errorModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+
+    <!-- Modal de Error para correo -->
+    <div id="emailErrorModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
       <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
         <h2 class="text-xl font-bold text-red-500 text-center mb-4">Error</h2>
-        <p id="errorMessage" class="text-center mb-4 text-gray-700">Mensaje de error</p>
+        <p class="text-center mb-4 text-gray-700">Solo se permiten correos de los dominios: @gmail.com, @outlook.com, @hotmail.com, @icloud.com, @cuautla.tecnm.mx</p>
         <div class="flex justify-center">
-          <button id="closeErrorModal" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg">
-            Cerrar
-          </button>
+          <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg" onclick="document.getElementById('emailErrorModal').classList.add('hidden')">Cerrar</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal de Error para contraseña -->
+    <div id="passwordErrorModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+        <h2 class="text-xl font-bold text-red-500 text-center mb-4">Error</h2>
+        <p class="text-center mb-4 text-gray-700">La contraseña debe tener 8 caracteres, incluyendo mayúsculas, minúsculas, números y un carácter especial.</p>
+        <div class="flex justify-center">
+          <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg" onclick="document.getElementById('passwordErrorModal').classList.add('hidden')">Cerrar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Error para coincidencia de contraseñas -->
+    <div id="confirmPasswordErrorModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+        <h2 class="text-xl font-bold text-red-500 text-center mb-4">Error</h2>
+        <p class="text-center mb-4 text-gray-700">Las contraseñas no coinciden.</p>
+        <div class="flex justify-center">
+          <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg" onclick="document.getElementById('confirmPasswordErrorModal').classList.add('hidden')">Cerrar</button>
         </div>
       </div>
     </div>
@@ -87,38 +107,16 @@ import Button from "@components/common/Button.astro";
     const passw = document.getElementById("passw");
     const confirmPassw = document.getElementById("confirmPassw");
 
-    const errorModal = document.getElementById("errorModal");
-    const errorMessage = document.getElementById("errorMessage");
-    const closeErrorModal = document.getElementById("closeErrorModal");
-
     const successModal = document.getElementById("successModal");
-    const successMessage = document.getElementById("successMessage");
     const closeSuccessModal = document.getElementById("closeSuccessModal");
 
-    // Expresión regular para validar la contraseña
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8}$/;
-
-    // Expresión regular para validar el dominio del correo
     const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|icloud\.com|cuautla\.tecnm\.mx)$/;
 
-    // Función para mostrar el modal de error
-    function showErrorModal(message) {
-      errorMessage.textContent = message;
-      errorModal.classList.remove("hidden");
+    function showModal(modalId) {
+      document.getElementById(modalId).classList.remove("hidden");
     }
 
-    // Función para mostrar el modal de éxito
-    function showSuccessModal(message) {
-      successMessage.textContent = message;
-      successModal.classList.remove("hidden");
-    }
-
-    // Cerrar el modal de error
-    closeErrorModal.addEventListener("click", () => {
-      errorModal.classList.add("hidden");
-    });
-
-    // Cerrar el modal de éxito y redirigir al login
     closeSuccessModal.addEventListener("click", () => {
       successModal.classList.add("hidden");
       window.location.href = "/indexApp";
@@ -127,64 +125,47 @@ import Button from "@components/common/Button.astro";
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      let isValid = true;
-      let errorMessage = "";
-
-      // Validación de edad
-      const edadValue = parseInt(edad.value);
-      if (isNaN(edadValue) || edadValue < 13 || edadValue > 99) {
-        isValid = false;
-        errorMessage += "La edad debe ser un número entre 13 y 99.\n";
-      }
-
-      // Validación de contraseña
-      if (!passwordRegex.test(passw.value)) {
-        isValid = false;
-        errorMessage += "La contraseña debe tener 8 caracteres, incluyendo mayúsculas, minúsculas, números y un carácter especial.\n";
-      }
-
-      // Validación de coincidencia de contraseñas
-      if (passw.value !== confirmPassw.value) {
-        isValid = false;
-        errorMessage += "Las contraseñas no coinciden.\n";
-      }
-
-      // Validación de correo electrónico
       if (!emailPattern.test(correo.value)) {
-        isValid = false;
-        errorMessage += "Solo se permiten correos de los dominios: @gmail.com, @outlook.com, @hotmail.com, @icloud.com, @cuautla.tecnm.mx\n";
+        showModal("emailErrorModal");
+        return;
       }
 
-      if (isValid) {
-        const data = {
-          nombre: nombre.value,
-          apellidoP: apellidoP.value,
-          apellidoM: apellidoM.value,
-          edad: edadValue,
-          pais: pais.value,
-          correo: correo.value,
-          telefono: telefono.value,
-          passw: passw.value,
-        };
+      if (!passwordRegex.test(passw.value)) {
+        showModal("passwordErrorModal");
+        return;
+      }
 
-        try {
-          const response = await fetch('http://localhost:5000/api/addUser', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
+      if (passw.value !== confirmPassw.value) {
+        showModal("confirmPasswordErrorModal");
+        return;
+      }
 
-          if (response.ok) {
-            showSuccessModal("Usuario registrado correctamente.");
-          } else {
-            showErrorModal("Error al registrar el usuario");
-          }
-        } catch (error) {
-          console.error("Error:", error);
-          showErrorModal("Error al registrar el usuario");
+      const data = {
+        nombre: nombre.value,
+        apellidoP: apellidoP.value,
+        apellidoM: apellidoM.value,
+        edad: parseInt(edad.value),
+        pais: pais.value,
+        correo: correo.value,
+        telefono: telefono.value,
+        passw: passw.value,
+      };
+
+      try {
+        const response = await fetch('http://localhost:5000/api/addUser', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          showModal("successModal");
+        } else {
+          showModal("emailErrorModal");
         }
-      } else {
-        showErrorModal(errorMessage);
+      } catch (error) {
+        console.error("Error:", error);
+        showModal("emailErrorModal");
       }
     });
   });
