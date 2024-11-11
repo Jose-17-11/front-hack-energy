@@ -97,7 +97,7 @@ import pool from '../database/conexion';
         if (response.ok) {
           showModal("Éxito", "Usuario actualizado correctamente", "success");
           setTimeout(() => {
-            window.location.href = "/adminUser"; // Redirige a la página de administración
+            window.location.href = "/adminUser";
           }, 2000);
         } else {
           showModal("Error", "Error al actualizar el usuario", "error");

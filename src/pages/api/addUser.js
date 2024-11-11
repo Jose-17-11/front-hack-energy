@@ -3,7 +3,7 @@ import pool from "../../database/conexion";
 export async function post({ request }) {
   try {
     const data = await request.json();
-    console.log(data); // Esto debería mostrar todos los campos, incluyendo 'passw'
+    console.log(data);
 
     const {
       nombre,

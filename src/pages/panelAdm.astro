@@ -51,9 +51,7 @@ import { Image } from "astro:assets"
 						<li class="font-light">Promedio de consumo de la semana actual: <span class="text-purple-800 font-bold">{promedioDataTwo} Kwh</span></li>
 					</ul>
 				
-					<!-- Contenedor centrado con texto a la izquierda y animación a la derecha -->
 					<div class="flex items-center gap-4 mt-4 pt-20">
-						<!-- Contenedor para el texto -->
 						<Mascota client:load>
 							<div class="w-56 h-56 bg-slate-200 shadow-lg shadow-black rounded-full flex items-center justify-center p-4">
 								<p class="text-sm text-center">
@@ -65,7 +63,6 @@ import { Image } from "astro:assets"
 							</div>
 						</Mascota>
 				
-						<!-- Imagen de animación a la derecha del texto -->
 						<Mascota client:load>
 							{promedioData > promedioDataTwo ? (
 								<Image

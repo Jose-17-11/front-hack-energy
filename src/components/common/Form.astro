@@ -49,64 +49,60 @@ import Button from "@components/common/Button.astro";
 </section>
 
 <script>
-const submit = document.getElementById('login');
-const email = document.getElementById('correoLogin');
-const password = document.getElementById('password');
+  const submit = document.getElementById('login');
+  const email = document.getElementById('correoLogin');
+  const password = document.getElementById('password');
 
-// Modal elements
-const errorModal = document.getElementById("errorModal");
-const errorMessage = document.getElementById("errorMessage");
-const closeModal = document.getElementById("closeModal");
+  const errorModal = document.getElementById("errorModal");
+  const errorMessage = document.getElementById("errorMessage");
+  const closeModal = document.getElementById("closeModal");
 
-// Función para mostrar el modal de error
-function showErrorModal(message) {
-  errorMessage.textContent = message;
-  errorModal.classList.remove("hidden");
-}
 
-// Cerrar el modal de error
-closeModal.addEventListener("click", () => {
-  errorModal.classList.add("hidden");
-});
-
-submit?.addEventListener('click', async (event) => {
-  event.preventDefault();
-
-  // Expresión regular para los dominios permitidos
-  const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|icloud\.com|cuautla\.tecnm\.mx)$/;
-
-  // Validación del correo
-  if (!emailPattern.test(email.value)) {
-    showErrorModal("Solo se permiten correos de los dominios: @gmail.com, @outlook.com, @hotmail.com, @icloud.com, @cuautla.tecnm.mx");
-    return;
+  function showErrorModal(message) {
+    errorMessage.textContent = message;
+    errorModal.classList.remove("hidden");
   }
 
-  // Validación para redirección de administrador
-  if (email.value === "admin@gmail.com" && password.value === "1234") {
-    window.location.href = "/adminUser";
-    return;
-  }
+  closeModal.addEventListener("click", () => {
+    errorModal.classList.add("hidden");
+  });
 
-  try {
-    // Enviar las credenciales al servidor
-    const response = await fetch("http://localhost:5000/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ correo: email.value, passw: password.value }),
-    });
+  submit?.addEventListener('click', async (event) => {
+    event.preventDefault();
 
-    const data = await response.json();
+    // Expresión regular para los dominios permitidos
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|icloud\.com|cuautla\.tecnm\.mx)$/;
 
-    if (response.ok && data.success) {
-      // Redirigir al usuario al panel de edificios si el login es exitoso
-      window.location.href = "/panel-edificios";
-    } else {
-      // Mostrar mensaje de error si las credenciales son incorrectas
-      showErrorModal(data.message || "Correo o contraseña incorrectos.");
+    // Validación del correo
+    if (!emailPattern.test(email.value)) {
+      showErrorModal("Solo se permiten correos de los dominios: @gmail.com, @outlook.com, @hotmail.com, @icloud.com, @cuautla.tecnm.mx");
+      return;
     }
-  } catch (error) {
-    console.error("Error al autenticar:", error);
-    showErrorModal("Error al autenticar. Por favor, intente nuevamente.");
-  }
-});
+
+    // Validación para redirección de administrador
+    if (email.value === "admin@gmail.com" && password.value === "1234") {
+      window.location.href = "/adminUser";
+      return;
+    }
+
+    try {
+      // Enviar las credenciales al servidor
+      const response = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ correo: email.value, passw: password.value }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        window.location.href = "/panel-edificios";
+      } else {
+        showErrorModal(data.message || "Correo o contraseña incorrectos.");
+      }
+    } catch (error) {
+      console.error("Error al autenticar:", error);
+      showErrorModal("Error al autenticar. Por favor, intente nuevamente.");
+    }
+  });
 </script>

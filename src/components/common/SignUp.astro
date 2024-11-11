@@ -31,10 +31,8 @@ import Button from "@components/common/Button.astro";
 
             <input required type="tel" id="telefono" placeholder="Teléfono" maxlength="10" pattern="[0-9]*" class="w-full bg-transparent border-b-2 focus:outline-none" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10)">
 
-            <!-- Campo de contraseña oculto -->
             <input required type="password" id="passw" placeholder="Contraseña" maxlength="8" class="w-full bg-transparent border-b-2 focus:outline-none">
 
-            <!-- Campo para repetir contraseña -->
             <input required type="password" id="confirmPassw" placeholder="Repetir Contraseña" maxlength="8" class="w-full bg-transparent border-b-2 focus:outline-none">
 
             <Button types="submit" id="register" class="w-full mt-4">
