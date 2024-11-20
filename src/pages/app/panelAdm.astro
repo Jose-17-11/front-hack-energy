@@ -38,18 +38,25 @@ import { Image } from "astro:assets"
 	  	<BaseL>
 			<div class="flex-grow bg-white p-4 grid grid-cols-3 gap-4 w-full">
 				<div class="col-span-1 flex flex-col gap-4">
-					<a href="/app/timeEstatic" class="flex items-center justify-center bg-purple-600 rounded-xl text-xl hover:bg-purple-700 transition-all duration-300 shadow-md w-full h-16 mt-36">
+					<a href="/app/formDispositivo" class="flex items-center justify-center bg-green-600 rounded-xl text-xl hover:bg-green-700 transition-all duration-300 shadow-md w-full h-16 mt-36">
 						<h2 class="text-center text-white font-semibold">Registrar nuevo dispositivo</h2>
 					</a>
 
 					<div class="bg-slate-300 rounded-xl shadow-black shadow-md flex flex-col items-center justify-between h-auto p-4 mt-10">
 						<h2 class="text-center text-2xl font-semibold">Áreas</h2>
 						<ol class="w-full flex flex-col text-slate-900 gap-2 pl-6 mt-4 list-decimal">
-							<li class="font-light">Recursos humanos</li>
-							<li class="font-light">Departamento de desarrollo</li>
-							<li class="font-light">Departamento de cómputo</li>
-						</ol>
-						<a href="/app/timeEstatic" class="text-lg flex items-center justify-center bg-purple-600 rounded-xl hover:bg-purple-700 transition-all duration-300 shadow-md w-32 h-10 p-2 mt-6">
+							<li class="font-light">
+							  <a href="/app/panelAreas" class="">Recursos humanos</a>
+							</li>
+							<li class="font-light">
+							  <a href="/app/panelAreas" class="">Departamento de desarrollo</a>
+							</li>
+							<li class="font-light">
+							  <a href="/app/panelAreas" class="">Departamento de cómputo</a>
+							</li>
+						  </ol>
+						  
+						<a href="/app/realTime" class="text-lg flex items-center justify-center bg-green-600 rounded-xl hover:bg-green-700 transition-all duration-300 shadow-md w-32 h-10 p-2 mt-6">
 						<h2 class="text-center text-white font-semibold">Ver más</h2>
 						</a>
 					</div>
