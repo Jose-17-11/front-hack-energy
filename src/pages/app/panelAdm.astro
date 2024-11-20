@@ -1,7 +1,6 @@
 ---
 import Layout from '../..//layouts/Layout.astro';
 import BaseL from '../..//layouts/BaseLayout.astro';
-import Animation from "@components/app/animations/Animation.jsx";
 import Happy from "@assets/mascota_happy.png";
 import Sad from "@assets/mascota_sad.png"
 
@@ -46,17 +45,17 @@ import { Image } from "astro:assets"
 						<h2 class="text-center text-2xl font-semibold">Áreas</h2>
 						<ol class="w-full flex flex-col text-slate-900 gap-2 pl-6 mt-4 list-decimal">
 							<li class="font-light">
-							  <a href="/app/panelAreas" class="">Recursos humanos</a>
+							  <a href="/app/panelAreas" class=" hover:bg-slate-200 transition-all duration-300">Recursos humanos</a>
 							</li>
 							<li class="font-light">
-							  <a href="/app/panelAreas" class="">Departamento de desarrollo</a>
+							  <a href="/app/panelAreas" class="">Ventas</a>
 							</li>
 							<li class="font-light">
 							  <a href="/app/panelAreas" class="">Departamento de cómputo</a>
 							</li>
 						  </ol>
 						  
-						<a href="/app/realTime" class="text-lg flex items-center justify-center bg-green-600 rounded-xl hover:bg-green-700 transition-all duration-300 shadow-md w-32 h-10 p-2 mt-6">
+						<a href="/app/historico" class="text-lg flex items-center justify-center bg-green-600 rounded-xl hover:bg-green-700 transition-all duration-300 shadow-md w-32 h-10 p-2 mt-6">
 						<h2 class="text-center text-white font-semibold">Ver más</h2>
 						</a>
 					</div>
