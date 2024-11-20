@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import ImageFondo from "@assets/logo.png";
+import Button from "@components/common/Button.astro";
+---
+<section class="w-5/6 h-5/6 bg-white grid grid-cols-3 grid-rows-1 rounded-xl shadow-2xl shadow-black">
+  <figure class="col-span-2">
+      <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover bg-purple-500 rounded-l-xl" />
+  </figure>
+  <form action="" method="post" class="rounded-xl col-span-1 flex items-center justify-center">
+      <div class="w-4/6 h-4/5 flex flex-col justify-center items-center gap-8">
+          <h2 class="text-7xl font-bold flex justify-center items-center">
+              Lower<span class="text-pink-500">G</span>
+          </h2>
+          <input required type="email" name="" id="correoLogin" placeholder="Email" 
+                 class="w-full bg-transparent border-b-2 focus:outline-none"
+                 pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|icloud\.com|cuautla\.tecnm\.mx)$"
+                 title="Solo se permiten correos de los dominios: @gmail.com, @outlook.com, @hotmail.com, @icloud.com, @cuautla.tecnm.mx">
+          <input required type="password" name="" id="password" placeholder="Password" 
+                 class="w-full bg-transparent border-b-2 focus:outline-none">
+          <p class="w-full text-end">
+              <a href="#" class="text-purple-800 font-bold hover:text-purple-950 transition-all">Forget password</a>
+          </p>
+          <Button types="submit" id="login">
+              <p class="text-white">Login</p>
+          </Button>
+          <div class="flex justify-center">
+              <p class="font-bold text-sm">
+                  ¿No tienes una cuenta? <a href="/app/registroLogin" class="text-pink-500 hover:underline">Regístrate aquí</a>
+              </p>  
+          </div>
+          <p class="font-bold flex justify-center items-center gap-2">
+              <a href="/landing/oferta" class="text-pink-500 hover:underline">Conoce nuestros planes</a>
+          </p>            
+      </div>
+  </form>
+</section>
+
+<script>
+    const submit = document.getElementById('login');
+    const email = document.getElementById('correoLogin') as HTMLInputElement;
+    const password = document.getElementById('password') as HTMLInputElement;
+    submit?.addEventListener('click', (event) => {
+        event.preventDefault();  
+        if (email.value === "guevara@midu.com" && password.value === "1234") {
+            window.location.href = "/app/panel-edificios"; 
+        } else {
+          alert("Ingrese bien los datos.");
+        }
+      });
+</script>

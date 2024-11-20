@@ -1,15 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import BaseL from '../layouts/BaseLayout.astro';
-import Animation from "@components/animations/Animation.jsx";
+import Layout from '../..//layouts/Layout.astro';
+import BaseL from '../..//layouts/BaseLayout.astro';
+import Animation from "@components/app/animations/Animation.jsx";
 import Happy from "@assets/mascota_happy.png";
 import Sad from "@assets/mascota_sad.png"
 
-import Data from "../data/region_one.json";
-import DataTwo from "../data/region_two.json";
-import frases from "../data/consejos.json";
+import Data from "../../data/region_one.json";
+import DataTwo from "../../data/region_two.json";
+import frases from "../../data/consejos.json";
 
-import Mascota from '@components/animations/Mascota';
+import Mascota from '@components/app/animations/Mascota';
 import { Image } from "astro:assets"
 
 	let sumaData = 0;
@@ -37,10 +37,10 @@ import { Image } from "astro:assets"
 	<main>
 		<BaseL>     
 			<div class="flex-grow bg-white p-2 grid grid-cols-2 grid-rows-2 gap-4 overflow-hidden">
-				<a href="/timeEstatic" class="col-start-1 row-start-1 bg-slate-300 rounded-xl shadow-black shadow-md hover:scale-105 transition-all">
+				<a href="/app/timeEstatic" class="col-start-1 row-start-1 bg-slate-300 rounded-xl shadow-black shadow-md hover:scale-105 transition-all">
 			  		<Animation client:load dataset={Data} week="de la semana pasada." ></Animation>
 				</a>
-				<a href="/realTime" class="col-start-1 row-start-2 bg-slate-300 rounded-xl shadow-black shadow-md hover:scale-105 transition-all">
+				<a href="/app/realTime" class="col-start-1 row-start-2 bg-slate-300 rounded-xl shadow-black shadow-md hover:scale-105 transition-all">
 				  <Animation client:load dataset={DataTwo} week="de la semana actual." ></Animation>
 				</a>
 				<aside class="bg-slate-300 row-span-2 rounded-xl shadow-black shadow-md relative flex flex-col items-center justify-start pt-4">

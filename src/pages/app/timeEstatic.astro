@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import BaseL from '../layouts/BaseLayout.astro';
-import Medidor from "../components/animations/Medidor.jsx";
-import Focos from "../components/animations/Foco.jsx";
+import Layout from '../../layouts/Layout.astro';
+import BaseL from '../../layouts/BaseLayout.astro';
+import MedidorE from "../../components/app/animations/MedidorEstatico.jsx";
+import Focos from "../../components/app/animations/Foco.jsx";
 ---
 <Layout title="LowerG">
     <main>
@@ -16,7 +16,7 @@ import Focos from "../components/animations/Foco.jsx";
                 </article>
                 <div class="flex flex-col items-center justify-center w-full h-full pb-0 ">
                     <h4 class="text-center text-2xl mb-0">Consumo de Kwh</h4>
-                    <Medidor client:load />
+                    <MedidorE client:load />
                 </div>
             </div>
         </BaseL>
