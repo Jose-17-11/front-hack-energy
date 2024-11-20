@@ -4,14 +4,13 @@ import ReactSpeedometer from "react-d3-speedometer";
 export default function DynamicGauge() {
   const [value, setValue] = useState(0);
 
-  const getRandomValue = () => Math.floor(Math.random() * 301);
-
   useEffect(() => {
-    setValue(getRandomValue());
-
     const interval = setInterval(() => {
-      setValue(getRandomValue());
-    }, 300000); // 5 minutos en milisegundos
+      setValue((prevValue) => {
+        const nextValue = prevValue + 50;
+        return nextValue > 300 ? 0 : nextValue;
+      });
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);

@@ -1,0 +1,65 @@
+---
+import Layout from '../..//layouts/Layout.astro';
+import BaseL from '../..//layouts/BaseLayout.astro';
+import MedidorE from '../../components/app/animations/MedidorEstatico';
+import LineasG from '../../components/app/animations/Lineas.tsx';
+---
+
+<Layout title="LowerG">
+    <main class="h-screen w-screen">
+      <BaseL>
+        <section class="w-auto min-h-screen flex items-center justify-center">
+           <div class="w-11/12 max-w-7xl bg-white border border-gray-300 rounded-lg shadow-lg p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h1 class="text-2xl font-bold">Área 1</h1>
+                        <p class="text-gray-600">Etiquetas</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <select class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="" disabled selected>Alertas</option>
+                        <option value="correoA">Correo</option>
+                        <option value="whatsapp">WhatsApp</option>
+                        </select>
+                        <select class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="" disabled selected class="text-center font-semibold">↻</option>
+                        <option value="cincoM">5 minutos</option>
+                        <option value="diezM">10 minutos</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Evolución de la potencia -->
+                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-1 flex flex-col items-center justify-center">
+                        <p class="text-gray-700 font-semibold mb-2">Evolución de la potencia</p>
+                        <LineasG client:load/>
+                    </div>
+        
+                    <!-- Consumo en kWh -->
+                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-1 flex flex-col items-center justify-center">
+                        <p class="text-gray-700 font-semibold mb-2">Consumo en kWh</p>
+                        <!-- Medidor dinámico -->
+                        <MedidorE client:load />
+                    </div>
+        
+                    <!-- Facturación -->
+                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-4 flex items-center justify-center">
+                        <p class="text-gray-700 font-semibold">Facturación:</p>
+                        <span class="text-gray-900 font-bold ml-1">$</span>
+                    </div>
+        
+                    <!-- Índices de consumo -->
+                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-4 flex items-center justify-center text-center">
+                        <p class="text-gray-700 font-semibold">
+                        Índices de consumo<br />
+                        <span class="text-gray-900">kWh/m²</span><br />
+                        <span class="text-gray-900">CO2e/m²</span>
+                        </p>
+                    </div>
+                </div>
+           </div>
+        </section>
+      </BaseL>
+    </main>
+  </Layout>
