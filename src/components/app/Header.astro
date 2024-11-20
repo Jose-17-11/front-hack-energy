@@ -1,17 +1,17 @@
 ---
 import { FaPowerOff } from 'react-icons/fa'
 import { Image } from "astro:assets";
-import ImageFondo from "@assets/logo2.png";
+import ImageFondo from "@assets/LogoTexto.png";
 import { FaArrowLeft } from "react-icons/fa";
 ---
-<header class="bg-CFE-700 flex justify-center items-center p-1 row-span-2 text-center">
+<header class="bg-CFE-800 flex justify-center items-center p-1 row-span-2 text-center">
   <a href="#" id="back-button">
     <FaArrowLeft className="text-5xl"/>
   </a>
   <div class="w-full flex justify-center items-center">
-    <h2 class="text-6xl font-semibold">
-      Lower<span class="text-pink-500">G</span>
-    </h2>
+    <figure class="col-span-2 flex justify-center items-center">
+      <Image src={ImageFondo} alt="ejemplo" class="max-w-[70%] max-h-[70%] object-contain" />
+    </figure>   
   </div>    
   <!-- Icono de usuario -->
   <div class="w-10 h-10 flex justify-center items-center cursor-pointer mr-3">

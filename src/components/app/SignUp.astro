@@ -1,17 +1,17 @@
 ---
 import { Image } from "astro:assets";
-import ImageFondo from "@assets/logo.png";
+import ImageFondo from "@assets/logoCompleto.png";
 import Button from "@components/common/Button.astro";
 ---
 
 <section class="w-5/6 h-5/6 bg-white grid grid-cols-3 grid-rows-1 rounded-xl shadow-2xl shadow-black">
-    <figure class="col-span-2">
-        <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover bg-purple-500 rounded-l-xl" />
-    </figure>
+    <figure class="col-span-2 flex justify-center items-center bg-CFE-800 rounded-l-xl">
+        <Image src={ImageFondo} alt="ejemplo" class="max-w-[80%] max-h-[80%] object-contain" />
+    </figure>  
     <form action="" method="post" class="rounded-xl col-span-1 flex items-center justify-center">
         <div class="w-4/5 h-auto flex flex-col justify-center items-center gap-3">
             <h2 class="text-5xl font-bold text-center">
-                Lower<span class="text-pink-500">G</span>
+                ENERG-<span class="text-CFE-700">X</span>
             </h2>
             <h3 class="text-2xl font-semibold text-center">
                 Crear cuenta
@@ -40,7 +40,7 @@ import Button from "@components/common/Button.astro";
             </Button>
             <p class="font-bold text-sm flex justify-center items-center gap-2 mt-2">
                 ¿Ya tienes una cuenta?
-                <a href="/app/indexApp" class="text-pink-500 hover:underline">LOGIN</a>
+                <a href="/app/indexApp" class="text-CFE-700 hover:underline">LOGIN</a>
             </p>            
         </div>
     </form>
