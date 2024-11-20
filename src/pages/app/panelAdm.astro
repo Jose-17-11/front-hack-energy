@@ -34,35 +34,49 @@ import { Image } from "astro:assets"
 	
 ---
 <Layout title="LowerG">
-	<main>
-		<BaseL>     
-			<div class="flex-grow bg-white p-2 grid grid-cols-2 grid-rows-2 gap-4 overflow-hidden">
-				<a href="/app/timeEstatic" class="col-start-1 row-start-1 bg-slate-300 rounded-xl shadow-black shadow-md hover:scale-105 transition-all">
-			  		<Animation client:load dataset={Data} week="de la semana pasada." ></Animation>
-				</a>
-				<a href="/app/realTime" class="col-start-1 row-start-2 bg-slate-300 rounded-xl shadow-black shadow-md hover:scale-105 transition-all">
-				  <Animation client:load dataset={DataTwo} week="de la semana actual." ></Animation>
-				</a>
-				<aside class="bg-slate-300 row-span-2 rounded-xl shadow-black shadow-md relative flex flex-col items-center justify-start pt-4">
-					<h3 class="w-4/5 mx-auto text-center py-4 text-2xl font-bold">Por un consumo de energía más amigable para todos.</h3>
-					
+	<main class="h-screen w-screen overflow-hidden">
+	  	<BaseL>
+			<div class="flex-grow bg-white p-4 grid grid-cols-3 gap-4 w-full">
+				<div class="col-span-1 flex flex-col gap-4">
+					<a href="/app/timeEstatic" class="flex items-center justify-center bg-purple-600 rounded-xl text-xl hover:bg-purple-700 transition-all duration-300 shadow-md w-full h-16 mt-36">
+						<h2 class="text-center text-white font-semibold">Registrar nuevo dispositivo</h2>
+					</a>
+
+					<div class="bg-slate-300 rounded-xl shadow-black shadow-md flex flex-col items-center justify-between h-auto p-4 mt-10">
+						<h2 class="text-center text-2xl font-semibold">Áreas</h2>
+						<ol class="w-full flex flex-col text-slate-900 gap-2 pl-6 mt-4 list-decimal">
+							<li class="font-light">Recursos humanos</li>
+							<li class="font-light">Departamento de desarrollo</li>
+							<li class="font-light">Departamento de cómputo</li>
+						</ol>
+						<a href="/app/timeEstatic" class="text-lg flex items-center justify-center bg-purple-600 rounded-xl hover:bg-purple-700 transition-all duration-300 shadow-md w-32 h-10 p-2 mt-6">
+						<h2 class="text-center text-white font-semibold">Ver más</h2>
+						</a>
+					</div>
+				</div>
+
+				<aside class="col-span-2 bg-slate-300 rounded-xl shadow-black shadow-md flex flex-col items-center justify-start p-6 h-[85vh]">
+					<h3 class="w-4/5 mx-auto text-center py-4 text-2xl font-bold">
+						Por un consumo de energía más amigable para todos.
+					</h3>
+
 					<ul class="w-full flex flex-col gap-4 pl-8 pt-5 text-slate-900">
 						<li class="font-light">Promedio de consumo de la semana pasada: <span class="text-purple-800 font-bold">{promedioData} Kwh</span></li>
 						<li class="font-light">Promedio de consumo de la semana actual: <span class="text-purple-800 font-bold">{promedioDataTwo} Kwh</span></li>
 					</ul>
-				
+
 					<div class="flex items-center gap-4 mt-4 pt-20">
 						<Mascota client:load>
-							<div class="w-56 h-56 bg-slate-200 shadow-lg shadow-black rounded-full flex items-center justify-center p-4">
-								<p class="text-sm text-center">
-									{promedioData > promedioDataTwo 
-										? positive + " Ahorraste el " + (Math.round(resultado) * -1) + "%" 
-										: negative + " Gastaste un " + Math.round(resultado) + "% más de tu servicio."
-									}
-								</p>
-							</div>
+						<div class="w-56 h-56 bg-slate-200 shadow-lg shadow-black rounded-full flex items-center justify-center p-4">
+							<p class="text-sm text-center">
+							{promedioData > promedioDataTwo 
+								? positive + " Ahorraste el " + (Math.round(resultado) * -1) + "%" 
+								: negative + " Gastaste un " + Math.round(resultado) + "% más de tu servicio."
+							}
+							</p>
+						</div>
 						</Mascota>
-				
+
 						<Mascota client:load>
 							{promedioData > promedioDataTwo ? (
 								<Image
@@ -80,8 +94,7 @@ import { Image } from "astro:assets"
 						</Mascota>
 					</div>
 				</aside>
-				
-		  </div>
+			</div>
 		</BaseL>
 	</main>
-</Layout>                                                                    
+</Layout>
