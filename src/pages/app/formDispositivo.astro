@@ -1,0 +1,73 @@
+---
+import Layout from '../..//layouts/Layout.astro';
+import BaseL from '../..//layouts/BaseLayout.astro';
+---
+
+<Layout title="LowerG">
+  <main class="h-screen w-screen overflow-hidden">
+    <BaseL>
+      <section class="w-full h-auto flex items-center justify-center mt-24">
+        <form class="w-full max-w-lg rounded-xl shadow-lg bg-white pl-14 pr-14 pt-4 pb-4 border border-gray-200">
+          <div class="w-full flex flex-col gap-6">
+            <h1 class="text-3xl font-semibold text-center mt-3">
+              Dispositivo
+            </h1>
+            <input 
+              required 
+              id="idPastilla" 
+              type="text" 
+              name="idPastilla" 
+              placeholder="Id-pastilla" 
+              maxlength="30" 
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+            <input 
+              required 
+              id="nombreArea" 
+              type="text" 
+              name="nombreArea" 
+              placeholder="Nombre de área" 
+              maxlength="50" 
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+            <input 
+              required 
+              id="metrosArea" 
+              type="number" 
+              name="metrosArea" 
+              placeholder="Metros cuadrados de área" 
+              min="1" 
+              max="9999" 
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+            <select 
+              required 
+              id="tipoConsumo" 
+              name="tipoConsumo" 
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+            >
+              <option value="" disabled selected>Tipo de consumo</option>
+              <option value="monofasico">Voltaje monofásico: 127 V</option>
+              <option value="trifasico">Voltaje trifásico: 220 V</option>
+            </select>
+            <input 
+              required 
+              id="edificio" 
+              type="text" 
+              name="edificio" 
+              placeholder="Edificio" 
+              maxlength="50" 
+              class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+            />
+            <button 
+              type="submit" 
+              class="w-full bg-green-600 hover:bg-green-700 font-bold py-2 rounded-lg transition-all duration-300 mb-5"
+            >
+              <p class="text-white text-2xl font-semibold">Agregar</p>
+            </button>
+          </div>
+        </form>
+      </section>
+    </BaseL>
+  </main>
+</Layout>
