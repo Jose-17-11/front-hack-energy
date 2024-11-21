@@ -11,15 +11,15 @@ import frases from "../../data/consejos.json";
 import Mascota from '@components/app/animations/Mascota';
 import { Image } from "astro:assets"
 
-	let sumaData = 0;
+/* 	let sumaData = 0;
   	let sumaDataTwo = 0;
   	// Recorremos solo hasta la cantidad de elementos que tiene DataTwo
   	for (let i = 0; i < DataTwo.length; i++) {
   	  sumaData += Data[i].seoul;
   	  sumaDataTwo += DataTwo[i].seoul;
-  	}
+  	} */
 
-  	// Calculamos los promedios
+/*   	// Calculamos los promedios
   	const promedioData = sumaData / DataTwo.length;
   	const promedioDataTwo = sumaDataTwo / DataTwo.length;
 
@@ -29,8 +29,19 @@ import { Image } from "astro:assets"
 	const negative = frases[1].phrases[numeroAleatorio]
 	
 	// Porcentaje ahorrado o incrementado
-	const resultado = ((promedioDataTwo - promedioData) / promedioData) * 100
-	
+	const resultado = ((promedioDataTwo - promedioData) / promedioData) * 100 */
+
+	// Valores estáticos
+const promedioData = 242.25; // Semana pasada
+const promedioDataTwo = 588.00; // Semana actual
+
+// Consejos
+const numeroAleatorio = Math.floor(Math.random() * 15);
+const positive = frases[0].phrases[numeroAleatorio];
+const negative = frases[1].phrases[numeroAleatorio];
+
+// Porcentaje ahorrado o incrementado
+const resultado = ((promedioDataTwo - promedioData) / promedioData) * 100;
 ---
 <Layout title="LowerG">
 	<main class="h-screen w-screen overflow-hidden">
@@ -77,7 +88,7 @@ import { Image } from "astro:assets"
 							<p class="text-sm text-center">
 							{promedioData > promedioDataTwo 
 								? positive + " Ahorraste el " + (Math.round(resultado) * -1) + "%" 
-								: negative + " Gastaste un " + Math.round(resultado) + "% más de tu servicio."
+								: negative + " Gastaste un " + Math.round(resultado) + "% más de tu consumo habitual."
 							}
 							</p>
 						</div>
