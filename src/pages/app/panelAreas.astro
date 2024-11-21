@@ -3,7 +3,7 @@ import Layout from '../..//layouts/Layout.astro';
 import BaseL from '../..//layouts/BaseLayout.astro';
 import MedidorE from '../../components/app/animations/MedidorEstatico';
 import LineasG from '../../components/app/animations/Lineas.tsx';
-
+import { TbRefresh } from "react-icons/tb";
 
 const consumo_kWh = 1500; 
 const area_m2 = 300;
@@ -42,8 +42,11 @@ const datosArea = {
                             <option value="correoA">Correo</option>
                             <option value="whatsapp">WhatsApp</option>
                         </select>
+                        <div class="flex items-center justify-center rounded-lg p-2">
+                            <TbRefresh className="text-gray-700 text-3xl" />
+                        </div>
                         <select class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-CFE-800">
-                            <option value="" disabled selected class="text-center font-semibold">↻</option>
+                            <option value="" disabled selected class="text-center font-semibold">Tiempo</option>
                             <option value="cincoM">5 minutos</option>
                             <option value="diezM">10 minutos</option>
                         </select>
