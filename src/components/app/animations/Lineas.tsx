@@ -20,26 +20,26 @@ export default function DifferentLength() {
         ]}
         yAxis={[
           {
-            data: [0, 20, 40, 60, 80, 100],
+            data: [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
             label: "Potencia (KW)",
             labelStyle: { fontSize: 14 },
           },
         ]}
         series={[
           {
-            data: [30, 45, 50, 55, 60, 50, 40], // Semana 1
+            data: [0.2, 0.4, 0.5, 1.4, 0.6, 0.5, 0.4], // Semana 1
             color: "#FF5733",
           },
           {
-            data: [35, 50, 70, 60, 80, 75, 55], // Semana 2 (evento)
+            data: [0.35, 0.5, 0.7, 1.8, 0.8, 0.75, 0.55], // Semana 2 (evento)
             color: "#8a2be2",
           },
           {
-            data: [25, 40, 35, 30, 45, 40, 30], // Semana 3 (menos actividad)
+            data: [0.25, 1.2, 0.35, 0.5, 0.45, 1.7, 0.3], // Semana 3 (menos actividad)
             color: "#008080",
           },
           {
-            data: [40, 60, 65, 70, 85, 80, 60], // Semana 4 (uso especial)
+            data: [0.4, 1.2, 1.9, 0.7, 0.85, 0.8, 0.6], // Semana 4 (uso especial)
             color: "#0000FF",
           },
         ]}

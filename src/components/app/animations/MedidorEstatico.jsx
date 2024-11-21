@@ -5,7 +5,7 @@ export default function DynamicGauge({ interval = 300000 }) {
   // Recibir intervalo como propiedad
   const [value, setValue] = useState(0);
 
-  const getRandomValue = () => Math.floor(Math.random() * 301); // Generar valor aleatorio
+  const getRandomValue = () => Math.random() * 2; // Generar valor aleatorio entre 0 y 2
 
   useEffect(() => {
     setValue(getRandomValue()); // Establecer valor inicial
@@ -28,14 +28,14 @@ export default function DynamicGauge({ interval = 300000 }) {
       }}
     >
       <ReactSpeedometer
-        maxValue={300}
+        maxValue={2}
         minValue={0}
         value={value}
         segments={3}
         segmentColors={["#47A248", "#FFD700", "#FF4500"]} // Verde, amarillo, rojo
         needleColor="#000000"
-        customSegmentStops={[0, 100, 200, 300]}
-        currentValueText={`Consumo: ${value} KWh`}
+        customSegmentStops={[0, 0.67, 1.33, 2]} // Actualizado para el nuevo rango
+        currentValueText={`Consumo: ${value.toFixed(2)} unidades`} // Mostrar con 2 decimales
         textColor="#000000"
         height={300}
         width={500}
@@ -43,19 +43,19 @@ export default function DynamicGauge({ interval = 300000 }) {
         ringWidth={30}
         customSegmentLabels={[
           {
-            text: "0-100",
+            text: "0-0.67",
             position: "OUTSIDE",
             color: "#47A248",
             fontSize: "12px",
           },
           {
-            text: "100-200",
+            text: "0.67-1.33",
             position: "OUTSIDE",
             color: "#FFD700",
             fontSize: "12px",
           },
           {
-            text: "200-300",
+            text: "1.33-2",
             position: "OUTSIDE",
             color: "#FF4500",
             fontSize: "12px",

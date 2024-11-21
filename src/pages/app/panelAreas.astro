@@ -5,10 +5,10 @@ import MedidorE from '../../components/app/animations/MedidorEstatico';
 import LineasG from '../../components/app/animations/Lineas.tsx';
 import { TbRefresh } from "react-icons/tb";
 
-const consumo_kWh = 1500; 
-const area_m2 = 300;
-const costo_kWh = 1.2; 
-const factor_emision_CO2e = 0.44;
+const consumo_kWh = 1.7; //de 0 a 2 kWh 
+const area_m2 = 300; //BD 
+const costo_kWh = 1.2; // 1.2 MxN x KWh  
+const factor_emision_CO2e = 0.464; //Estatico por la CFE
 
 // Cálculos dinámicos
 const facturacion = consumo_kWh * costo_kWh;
@@ -17,7 +17,7 @@ const indice_CO2e_m2 = (consumo_kWh * factor_emision_CO2e) / area_m2;
 
 const datosArea = {
   nombre: "Área 1",
-  etiquetas: "Etiquetas",
+  etiquetas: "Edificio 1",
   consumo_kWh,
   area_m2,
   facturacion,
@@ -37,7 +37,7 @@ const datosArea = {
                         <p class="text-gray-600">{datosArea.etiquetas}</p>
                     </div>
                     <div class="flex gap-3">
-                        <select class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-CFE-800">
+                        <select class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-CFE-800 mr-3">
                             <option value="" disabled selected>Alertas</option>
                             <option value="correoA">Correo</option>
                             <option value="whatsapp">WhatsApp</option>
