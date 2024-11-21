@@ -1,30 +1,23 @@
 ---
-import { FaUserCircle } from "react-icons/fa";
 import Header from "@components/app/Header.astro";
+import UserAside from "@components/app/UserAside";
 import ImageFondo from "@assets/mascota_happy.png";
-import { Image } from "astro:assets"
+import { Image } from "astro:assets";
 ---
 
 <div class="h-screen flex flex-col">
   <Header />
   <section class="flex flex-grow">
-    <aside class="bg-CFE-600 p-4 w-64 flex flex-col items-center gap-4">
-      <!-- Icono de usuario -->
-      <div class="w-20 h-20 flex justify-center items-center mt-3">
-        <FaUserCircle className="text-9xl" />
-      </div>
-      <article class="flex flex-col items-center gap-8 text-center mt-2">
-        <h2 class="text-black mt-2 text-xl font-bold">Adrian Guevara Rendón</h2>
-        <ul class="text-slate-700 flex flex-col items-center gap-2 text-xl">
-          <li class="mt-2">guevara@midu.com</li>
-          <li class="mt-2">7351890934</li>
-          <li class="mt-2">DevG</li>
-        </ul>
-        <figure class="w-full h-auto">
-          <Image src={ImageFondo} alt="ejemplo" class="w-full h-full object-cover" />
-        </figure>
-      </article>
-    </aside>
+    <div class="flex flex-col items-center bg-CFE-600 p-4 w-64">
+      <UserAside client:load />
+      <figure class="w-full h-auto mt-4">
+        <Image
+          src={ImageFondo}
+          alt="ejemplo"
+          class="w-full h-full object-cover"
+        />
+      </figure>
+    </div>
     <div class="flex-grow">
       <slot />
     </div>
