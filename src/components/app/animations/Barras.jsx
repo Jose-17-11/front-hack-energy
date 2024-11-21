@@ -43,7 +43,7 @@ export default function FormatterDemoNoSnap() {
       series={[
         {
           dataKey: "value",
-          label: "Semanas",
+          label: "Áreas",
           barStyle: (entry) => ({ fill: entry.color }),
         },
       ]}
