@@ -19,7 +19,8 @@ const indice_CO2e_m2 = (semanaKwh * factor_emision_CO2e) / area_m2;
 
 const datosArea = {
   nombre: "Recursos Humanos",
-  etiquetas: "Edificio 1",
+  edificio: "Edificio 1",
+  etiquetas: "Área: 200 m²",
   consumo_kWh,
   area_m2,
   facturacion,
@@ -31,11 +32,12 @@ const datosArea = {
 <Layout title="LowerG">
     <main class="h-screen w-screen">
       <BaseL>
-        <section class="w-auto h-auto mt-4 flex items-center justify-center">
+        <section class="w-auto h-auto mt-3 flex items-center justify-center">
            <div class="w-full max-w-6xl bg-white border border-gray-300 rounded-lg shadow-lg p-4">
-                <div class="flex justify-between items-center mb-6">
+                <div class="flex justify-between items-center mb-2">
                     <div>
                         <h1 class="text-2xl font-bold">{datosArea.nombre}</h1>
+                        <p class="text-gray-600">{datosArea.edificio}</p>
                         <p class="text-gray-600">{datosArea.etiquetas}</p>
                     </div>
                     <div class="flex gap-3">
@@ -54,9 +56,9 @@ const datosArea = {
                         <LineasG client:load />
                     </div>
         
-                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-4 flex flex-col items-center">
+                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-2 flex flex-col items-center">
                         <!-- Contenedor horizontal con distribución -->
-                        <div class="flex items-center justify-between w-full mb-4">
+                        <div class="flex items-center justify-between w-full mb-2">
                             <!-- Texto alineado a la izquierda -->
                             <p class="font-bold">Consumo en kWh</p>
                             <!-- Ícono e input alineados a la derecha -->
@@ -76,7 +78,7 @@ const datosArea = {
                     </div>                    
         
                     <!-- Facturación -->
-                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-4 flex items-center justify-center">
+                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-2 flex items-center justify-center">
                         <p class="font-bold">Facturación por semana:</p>
                         <span class=" ont-bold ml-1">${datosArea.facturacion.toFixed(2)} MXN</span>
                     </div>
@@ -84,7 +86,7 @@ const datosArea = {
                     <!-- Índices de consumo -->
                     <div class="bg-gray-100 border border-gray-300 rounded-lg p-4">
                         <!-- Título centrado arriba -->
-                        <h2 class="font-bold text-center mb-4">Índices de consumo</h2>
+                        <h2 class="font-bold text-center mb-2">Índices de consumo</h2>
                         <!-- Contenedor para los párrafos -->
                         <div class="flex justify-between">
                             <!-- Párrafo a la izquierda -->
