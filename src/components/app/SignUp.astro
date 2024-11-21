@@ -45,3 +45,61 @@ import Button from "@components/common/Button.astro";
         </div>
     </form>
 </section>
+<script>
+    const submit = document.getElementById('register');
+    const nombre = document.getElementById('nombre') as HTMLInputElement;
+    const apellidoP = document.getElementById('apellidoP') as HTMLInputElement;
+    const apellidoM = document.getElementById('apellidoM') as HTMLInputElement;
+    const edad = document.getElementById('edad') as HTMLInputElement;
+    const pais = document.getElementById('pais') as HTMLInputElement;
+    const email = document.getElementById('correo') as HTMLInputElement;
+    const telefono = document.getElementById('telefono') as HTMLInputElement;
+    const password = document.getElementById('passw') as HTMLInputElement;
+    submit?.addEventListener('click', async (event) => {
+        event.preventDefault();  
+        const apiUrl = "http://200.234.224.102/register";
+
+        try {
+            // Enviar los datos al endpoint de login
+            const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                nombre: nombre.value,
+                apellidoM: apellidoM.value,
+                apellidoP: apellidoP.value,
+                edad: edad.value,
+                pais: pais.value,
+                correo: email.value,
+                telefono: telefono.value,
+                contraseña: password.value
+                }), 
+            });
+
+            // Verificar si la respuesta es exitosa
+            if (!response.ok) {
+                alert("Ingreso algun dato incorrecto")
+            throw new Error('Credenciales inválidas o error en el servidor');
+            }
+            window.location.href= "/app/indexApp"
+            // Obtener el token del cuerpo de la respuesta
+            const data = await response.json();
+            const token = data.token;
+
+            if (!token) {
+            throw new Error('No se recibió un token de la API');
+            }
+
+            // Almacenar el token en localStorage
+            localStorage.setItem('auth_token', token);
+
+            console.log('Usuario autenticado con éxito');
+            return token; // Devuelve el token para uso adicional si es necesario
+        } catch (error) {
+            console.error('Error durante el login:');
+            return null; // Manejo de errores, retorna null si falla
+        }
+      });
+</script>

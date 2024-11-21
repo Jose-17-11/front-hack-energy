@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import ImageFondo from "@assets/logoCompleto.png";
 import Button from "@components/common/Button.astro";
+const url = import.meta.env.ENDPOINT_LOGIN_USER
 ---
 <section class="w-5/6 h-5/6 bg-white grid grid-cols-3 grid-rows-1 rounded-xl shadow-2xl shadow-black">
     <figure class="col-span-2 flex justify-center items-center bg-CFE-800 rounded-l-xl">
@@ -13,10 +14,9 @@ import Button from "@components/common/Button.astro";
                 ENERG-<span class="text-CFE-700">X</span>
             </h2>
           
-          <input required type="email" name="" id="correoLogin" placeholder="Email" 
+          <input required type="email" name="" id="emailLogin" placeholder="email" 
                  class="w-full bg-transparent border-b-2 focus:outline-none"
-                 pattern="^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com|icloud\.com|cuautla\.tecnm\.mx)$"
-                 title="Solo se permiten correos de los dominios: @gmail.com, @outlook.com, @hotmail.com, @icloud.com, @cuautla.tecnm.mx">
+                 title="Solo se permiten emails de los dominios: @gmail.com, @outlook.com, @hotmail.com, @icloud.com, @cuautla.tecnm.mx">
           <input required type="password" name="" id="password" placeholder="Password" 
                  class="w-full bg-transparent border-b-2 focus:outline-none">
           <p class="w-full text-end">
@@ -39,14 +39,46 @@ import Button from "@components/common/Button.astro";
 
 <script>
     const submit = document.getElementById('login');
-    const email = document.getElementById('correoLogin') as HTMLInputElement;
+    const email = document.getElementById('emailLogin') as HTMLInputElement;
     const password = document.getElementById('password') as HTMLInputElement;
-    submit?.addEventListener('click', (event) => {
+    submit?.addEventListener('click', async (event) => {
         event.preventDefault();  
-        if (email.value === "guevara@midu.com" && password.value === "1234") {
-            window.location.href = "/app/panelAdm"; 
-        } else {
-          alert("Ingrese bien los datos.");
+        const apiUrl = "http://200.234.224.102/user";
+
+        try {
+            // Enviar los datos al endpoint de login
+            const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ correo: email.value, contraseña: password.value }), // Convertir los datos a JSON
+            });
+
+            // Verificar si la respuesta es exitosa
+            if (!response.ok) {
+                alert("Ingreso algun dato incorrecto")
+            throw new Error('Credenciales inválidas o error en el servidor');
+            }
+            window.location.href= "/app/panelAdm"
+            // Obtener el token del cuerpo de la respuesta
+            const data = await response.json();
+            const token = data.token;
+
+            if (!token) {
+            throw new Error('No se recibió un token de la API');
+            }
+
+            // Almacenar el token en localStorage
+            localStorage.setItem('auth_token', token);
+
+            console.log('Usuario autenticado con éxito');
+            return token; // Devuelve el token para uso adicional si es necesario
+        } catch (error) {
+            console.error('Error durante el login:');
+            return null; // Manejo de errores, retorna null si falla
         }
       });
 </script>
+<!-- email: jose@example.com -->
+<!-- contraseña: secure_password -->
