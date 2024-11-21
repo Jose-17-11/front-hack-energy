@@ -3,9 +3,9 @@ import { FaUserCircle } from "react-icons/fa";
 
 export default function UserAside() {
   const [userData, setUserData] = useState({
-    name: "Cargando...",
-    email: "Cargando...",
-    phone: "Cargando...",
+    name: "",
+    email: "",
+    phone: "",
   });
 
   useEffect(() => {
